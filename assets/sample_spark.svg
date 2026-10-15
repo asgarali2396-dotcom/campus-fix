@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <rect width="400" height="300" fill="#1e1e2f"/>
+  <rect x="50" y="50" width="300" height="200" rx="16" fill="#2d2d44" stroke="#f59e0b" stroke-width="3"/>
+  <circle cx="200" cy="150" r="45" fill="#f59e0b" opacity="0.2"/>
+  <path d="M210 90 L170 160 L205 160 L185 220 L235 140 L200 140 Z" fill="#fbbf24"/>
+  <text x="200" y="275" fill="#fcd34d" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Electrical Malfunction &amp; Spark Hazard</text>
+</svg>

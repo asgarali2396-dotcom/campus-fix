@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <rect width="400" height="300" fill="#0f172a"/>
+  <rect x="50" y="50" width="300" height="200" rx="16" fill="#1e293b" stroke="#38bdf8" stroke-width="3"/>
+  <path d="M120 120 C160 80 240 80 280 120" fill="none" stroke="#ef4444" stroke-width="8" stroke-linecap="round"/>
+  <path d="M150 150 C180 120 220 120 250 150" fill="none" stroke="#ef4444" stroke-width="8" stroke-linecap="round"/>
+  <path d="M180 180 C190 170 210 170 220 180" fill="none" stroke="#ef4444" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="200" cy="205" r="8" fill="#ef4444"/>
+  <text x="200" y="275" fill="#f87171" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Network AP Disconnected / Amber LED Alert</text>
+</svg>

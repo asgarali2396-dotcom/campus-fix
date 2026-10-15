@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <rect width="400" height="300" fill="#0c1a2e"/>
+  <rect x="50" y="50" width="300" height="200" rx="16" fill="#132743" stroke="#0ea5e9" stroke-width="3"/>
+  <!-- Pipe & Water droplet -->
+  <path d="M140 100 L260 100 L260 140 L215 140 L215 160 L185 160 L185 140 L140 140 Z" fill="#64748b"/>
+  <path d="M200 175 C190 200 180 215 180 230 C180 245 190 255 200 255 C210 255 220 245 220 230 C220 215 210 200 200 175 Z" fill="#38bdf8"/>
+  <text x="200" y="280" fill="#7dd3fc" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Plumbing Valve Pressure Leak</text>
+</svg>

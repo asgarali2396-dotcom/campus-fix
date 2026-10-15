@@ -1,0 +1,180 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070a14"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+
+    <!-- Shield & Accent Neon Gradient -->
+    <linearGradient id="shieldBorderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="45%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+
+    <!-- Academic Building Gradient -->
+    <linearGradient id="campusGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+
+    <!-- Wrench Chrome Gradient -->
+    <linearGradient id="wrenchGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="30%" stop-color="#f0f9ff"/>
+      <stop offset="70%" stop-color="#bae6fd"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+
+    <!-- Gear Gradient -->
+    <linearGradient id="gearGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+
+    <!-- Green Check / Resolution Gradient -->
+    <linearGradient id="checkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="50%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+
+    <!-- Ambient Center Glow -->
+    <radialGradient id="ambientGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.32"/>
+      <stop offset="55%" stop-color="#6366f1" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Drop Glow Filter -->
+    <filter id="glowEffect" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#38bdf8" flood-opacity="0.45"/>
+    </filter>
+
+    <filter id="checkGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="5" stdDeviation="10" flood-color="#10b981" flood-opacity="0.65"/>
+    </filter>
+  </defs>
+
+  <!-- Base Squircle -->
+  <rect width="512" height="512" rx="116" fill="url(#bgGrad)"/>
+  
+  <!-- Subtle Outer Border Rim -->
+  <rect x="2" y="2" width="508" height="508" rx="114" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="3"/>
+  <rect x="5" y="5" width="502" height="502" rx="111" fill="none" stroke="rgba(56,189,248,0.25)" stroke-width="1.5"/>
+
+  <!-- Center Ambient Glow -->
+  <circle cx="256" cy="256" r="200" fill="url(#ambientGlow)"/>
+
+  <!-- Campus Shield Silhouette with Glowing Border -->
+  <g filter="url(#glowEffect)">
+    <!-- Shield Solid Fill -->
+    <path d="M 256 80 
+             C 346 80, 400 125, 400 236 
+             C 400 348, 304 420, 256 444 
+             C 208 420, 112 348, 112 236 
+             C 112 125, 166 80, 256 80 Z" 
+          fill="#0a1226" fill-opacity="0.92" 
+          stroke="url(#shieldBorderGrad)" stroke-width="13" stroke-linejoin="round"/>
+    
+    <!-- Inner Subtle Accent Rim -->
+    <path d="M 256 96 
+             C 334 96, 382 136, 382 236 
+             C 382 334, 296 400, 256 422 
+             C 216 400, 130 334, 130 236 
+             C 130 136, 178 96, 256 96 Z" 
+          fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+  </g>
+
+  <!-- Campus Academic Portico & Columns (Campus Element) -->
+  <g opacity="0.65" transform="translate(0, 10)">
+    <!-- Pediment Gable Triangle -->
+    <polygon points="256,110 178,150 334,150" fill="url(#campusGrad)"/>
+    <!-- Entablature bar -->
+    <rect x="172" y="152" width="168" height="8" rx="2" fill="#bae6fd"/>
+    <!-- 4 Classic Campus Pillars -->
+    <rect x="186" y="162" width="14" height="48" rx="2" fill="#7dd3fc"/>
+    <rect x="228" y="162" width="14" height="48" rx="2" fill="#7dd3fc"/>
+    <rect x="270" y="162" width="14" height="48" rx="2" fill="#7dd3fc"/>
+    <rect x="312" y="162" width="14" height="48" rx="2" fill="#7dd3fc"/>
+    <!-- Pillar Base Plinth -->
+    <rect x="172" y="212" width="168" height="8" rx="2" fill="#bae6fd"/>
+  </g>
+
+  <!-- Precision Maintenance Gear (Fix Element) -->
+  <g transform="translate(256, 280)">
+    <!-- 8 Tooth Mechanical Gear -->
+    <path d="
+      M -22,-82 L 22,-82 L 26,-64 
+      C 38,-58 48,-50 58,-40 L 74,-50 L 105,-19 L 95,-3 
+      C 101,8 105,20 106,32 L 124,36 L 124,80 L 106,84 
+      C 105,96 101,108 95,119 L 105,135 L 74,166 L 58,156 
+      C 48,166 38,174 26,180 L 22,198 L -22,198 L -26,180 
+      C -38,174 -48,166 -58,156 L -74,166 L -105,135 L -95,119 
+      C -101,108 -105,96 -106,84 L -124,80 L -124,36 L -106,32 
+      C -105,20 -101,8 -95,-3 L -105,-19 L -74,-50 L -58,-40 
+      C -48,-50 -38,-58 -26,-64 Z
+    " transform="scale(0.68) translate(0, -58)" fill="url(#gearGrad)" stroke="#38bdf8" stroke-width="3.5" opacity="0.95"/>
+    <!-- Gear center axle bore -->
+    <circle cx="0" cy="0" r="30" fill="#0a1226" stroke="#38bdf8" stroke-width="5"/>
+  </g>
+
+  <!-- Heavy-Duty Solid Chrome Wrench (Maintenance Tool) -->
+  <g transform="translate(256, 280) rotate(-42)" filter="url(#glowEffect)">
+    <!-- Solid Wrench Silhouette -->
+    <path d="
+      M -28,-105 
+      C -40,-86 -40,-64 -28,-46 
+      L -14,-30 L -12,42 
+      C -26,50 -32,66 -28,82 
+      C -23,98 -7,108 10,108 
+      C 27,108 43,98 48,82 
+      C 52,66 46,50 32,42 
+      L 30,-30 L 44,-46 
+      C 56,-64 56,-86 44,-105 
+      C 36,-116 20,-118 8,-115 
+      L 0,-92 L -8,-115 
+      C -20,-118 -36,-116 -28,-105 Z
+    " fill="url(#wrenchGrad)" stroke="#0284c7" stroke-width="4" stroke-linejoin="round"/>
+    <!-- Ring end center cutout -->
+    <circle cx="10" cy="78" r="16" fill="#0a1226" stroke="#0284c7" stroke-width="3.5"/>
+    <!-- Highlight Reflection on shaft -->
+    <path d="M 0,-24 L 0,36" stroke="#ffffff" stroke-width="5" stroke-linecap="round" opacity="0.9"/>
+  </g>
+
+  <!-- Dynamic Emerald Resolution Checkmark ("FIXED" Badge) -->
+  <g filter="url(#checkGlow)">
+    <path d="M 180 282 L 234 336 L 344 204" 
+          fill="none" 
+          stroke="url(#checkGrad)" 
+          stroke-width="24" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"/>
+    <!-- Inner pure white electric shimmer -->
+    <path d="M 182 282 L 234 334 L 342 206" 
+          fill="none" 
+          stroke="#ffffff" 
+          stroke-width="8" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"
+          opacity="0.92"/>
+  </g>
+
+  <!-- Clean Brilliance Sparkles -->
+  <g transform="translate(378, 126)">
+    <!-- 4-point Star 1 -->
+    <path d="M 0 -20 Q 0 0 20 0 Q 0 0 0 20 Q 0 0 -20 0 Q 0 0 0 -20 Z" fill="#38bdf8"/>
+    <circle cx="0" cy="0" r="4.5" fill="#ffffff"/>
+  </g>
+  <g transform="translate(406, 162)">
+    <!-- 4-point Star 2 -->
+    <path d="M 0 -11 Q 0 0 11 0 Q 0 0 0 11 Q 0 0 -11 0 Q 0 0 0 -11 Z" fill="#c084fc"/>
+  </g>
+  <g transform="translate(122, 162)">
+    <!-- 4-point Star 3 (left accent) -->
+    <path d="M 0 -9 Q 0 0 9 0 Q 0 0 0 9 Q 0 0 -9 0 Q 0 0 0 -9 Z" fill="#38bdf8" opacity="0.8"/>
+  </g>
+</svg>

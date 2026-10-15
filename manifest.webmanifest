@@ -1,0 +1,60 @@
+{
+  "name": "Campus Fix - Campus Maintenance & Complaint Management System",
+  "short_name": "Campus Fix",
+  "description": "DBMS Mini Project: Relational Maintenance & Complaint Management System for Educational Institutions",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#090d16",
+  "theme_color": "#0f172a",
+  "categories": ["education", "utilities", "productivity"],
+  "icons": [
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Report New Issue",
+      "short_name": "New Issue",
+      "description": "Quickly submit a new maintenance complaint",
+      "url": "./index.html?action=new-complaint",
+      "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Track Complaints",
+      "short_name": "Track",
+      "description": "Check current status of campus tickets",
+      "url": "./index.html?tab=complaints",
+      "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "DBMS Schema & SQL",
+      "short_name": "DBMS Studio",
+      "description": "View Relational ER, Normalization & SQL Playground",
+      "url": "./index.html?tab=dbms",
+      "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

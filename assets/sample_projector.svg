@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <rect width="400" height="300" fill="#18181b"/>
+  <rect x="50" y="50" width="300" height="200" rx="16" fill="#27272a" stroke="#ec4899" stroke-width="3"/>
+  <rect x="110" y="110" width="180" height="70" rx="8" fill="#3f3f46"/>
+  <circle cx="160" cy="145" r="22" fill="#ec4899" opacity="0.8"/>
+  <polygon points="182,145 270,120 270,170" fill="#ec4899" opacity="0.3"/>
+  <text x="200" y="275" fill="#f472b6" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Projector Optical Lamp Glitch</text>
+</svg>

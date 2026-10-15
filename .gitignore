@@ -1,0 +1,21 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor & IDE files
+.vscode/
+.idea/
+*.suo
+*.user
+*.useros
+*.sln.docstates
+
+# Logs & temp files
+*.log
+*.tmp
+*.bak
+
+# Node & package managers (if used in future)
+node_modules/
+package-lock.json
