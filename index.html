@@ -9,7 +9,7 @@
   <!-- PWA Metadata -->
   <meta name="description"
     content="Database-driven Progressive Web App for Campus Maintenance & Complaint Management System demonstrating ER modeling, Normalization, ACID Transactions, and RBAC.">
-  <meta name="theme-color" content="#0f172a">
+  <meta name="theme-color" content="#291C0E">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Campus Fix">
@@ -345,163 +345,163 @@
               <svg class="er-svg-canvas" viewBox="0 0 1150 680" width="100%">
                 <defs>
                   <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#312e81" />
-                    <stop offset="100%" stop-color="#4338ca" />
+                    <stop offset="0%" stop-color="#6E473B" />
+                    <stop offset="100%" stop-color="#291C0E" />
                   </linearGradient>
                   <linearGradient id="headerGradCyan" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#0f766e" />
-                    <stop offset="100%" stop-color="#0d9488" />
+                    <stop offset="0%" stop-color="#A78D78" />
+                    <stop offset="100%" stop-color="#6E473B" />
                   </linearGradient>
                   <linearGradient id="headerGradAmber" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#9a3412" />
-                    <stop offset="100%" stop-color="#c2410c" />
+                    <stop offset="0%" stop-color="#D98C45" />
+                    <stop offset="100%" stop-color="#6E473B" />
                   </linearGradient>
                   <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
-                    <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4" />
+                    <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5" />
                   </filter>
                 </defs>
 
                 <!-- Connector Lines with Cardinality Labels -->
                 <!-- DEPARTMENTS -> USERS -->
-                <path d="M190 190 L190 280" stroke="#38bdf8" stroke-width="2.5" stroke-dasharray="none" />
-                <text x="200" y="240" fill="#38bdf8" font-size="12" font-weight="bold">1:N</text>
+                <path d="M190 190 L190 280" stroke="#A78D78" stroke-width="2.5" stroke-dasharray="none" />
+                <text x="200" y="240" fill="#A78D78" font-size="12" font-weight="bold">1:N</text>
 
                 <!-- DEPARTMENTS -> CATEGORIES -->
-                <path d="M290 120 L440 120" stroke="#38bdf8" stroke-width="2.5" />
-                <text x="350" y="112" fill="#38bdf8" font-size="12" font-weight="bold">1:N</text>
+                <path d="M290 120 L440 120" stroke="#A78D78" stroke-width="2.5" />
+                <text x="350" y="112" fill="#A78D78" font-size="12" font-weight="bold">1:N</text>
 
                 <!-- CATEGORIES -> COMPLAINTS -->
-                <path d="M540 190 L540 280" stroke="#a855f7" stroke-width="2.5" />
-                <text x="550" y="240" fill="#a855f7" font-size="12" font-weight="bold">1:N</text>
+                <path d="M540 190 L540 280" stroke="#6E473B" stroke-width="2.5" />
+                <text x="550" y="240" fill="#6E473B" font-size="12" font-weight="bold">1:N</text>
 
                 <!-- USERS (Reporter) -> COMPLAINTS -->
-                <path d="M290 350 L440 350" stroke="#10b981" stroke-width="2.5" />
-                <text x="350" y="342" fill="#10b981" font-size="12" font-weight="bold">1:N</text>
+                <path d="M290 350 L440 350" stroke="#5E936C" stroke-width="2.5" />
+                <text x="350" y="342" fill="#5E936C" font-size="12" font-weight="bold">1:N</text>
 
                 <!-- COMPLAINTS -> ASSIGNMENTS -->
-                <path d="M640 330 L780 250" stroke="#f59e0b" stroke-width="2.5" />
-                <text x="700" y="280" fill="#f59e0b" font-size="12" font-weight="bold">1:N</text>
+                <path d="M640 330 L780 250" stroke="#D98C45" stroke-width="2.5" />
+                <text x="700" y="280" fill="#D98C45" font-size="12" font-weight="bold">1:N</text>
 
                 <!-- COMPLAINTS -> COMPLAINT_UPDATES -->
-                <path d="M640 380 L780 410" stroke="#ec4899" stroke-width="2.5" />
-                <text x="700" y="390" fill="#ec4899" font-size="12" font-weight="bold">1:N</text>
+                <path d="M640 380 L780 410" stroke="#BEB5A9" stroke-width="2.5" />
+                <text x="700" y="390" fill="#BEB5A9" font-size="12" font-weight="bold">1:N</text>
 
                 <!-- COMPLAINTS -> FEEDBACK -->
-                <path d="M540 480 L540 540" stroke="#06b6d4" stroke-width="2.5" />
-                <text x="550" y="515" fill="#06b6d4" font-size="12" font-weight="bold">1:1 (Unique)</text>
+                <path d="M540 480 L540 540" stroke="#A78D78" stroke-width="2.5" />
+                <text x="550" y="515" fill="#A78D78" font-size="12" font-weight="bold">1:1 (Unique)</text>
 
                 <!-- COMPLAINTS -> ACTIVITY_LOGS -->
-                <path d="M440 450 L290 530" stroke="#8b5cf6" stroke-width="2.5" />
-                <text x="350" y="500" fill="#8b5cf6" font-size="12" font-weight="bold">1:N</text>
+                <path d="M440 450 L290 530" stroke="#E1D4C2" stroke-width="2.5" />
+                <text x="350" y="500" fill="#E1D4C2" font-size="12" font-weight="bold">1:N</text>
 
                 <!-- ENTITY 1: DEPARTMENTS -->
                 <g transform="translate(90, 50)" filter="url(#shadow)">
-                  <rect width="200" height="140" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" />
+                  <rect width="200" height="140" rx="8" fill="#291C0E" stroke="#A78D78" stroke-width="1.5" />
                   <rect width="200" height="32" rx="8" fill="url(#headerGrad)" />
                   <text x="100" y="21" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="13"
                     font-weight="bold" text-anchor="middle">DEPARTMENTS</text>
-                  <text x="15" y="52" fill="#f8fafc" font-size="11">🔑 department_id [PK, INT]</text>
-                  <text x="15" y="70" fill="#94a3b8" font-size="11">dept_code [VARCHAR, UNQ]</text>
-                  <text x="15" y="88" fill="#94a3b8" font-size="11">dept_name [VARCHAR]</text>
-                  <text x="15" y="106" fill="#94a3b8" font-size="11">head_name [VARCHAR]</text>
-                  <text x="15" y="124" fill="#94a3b8" font-size="11">location_block [VARCHAR]</text>
+                  <text x="15" y="52" fill="#F7F3EE" font-size="11">🔑 department_id [PK, INT]</text>
+                  <text x="15" y="70" fill="#BEB5A9" font-size="11">dept_code [VARCHAR, UNQ]</text>
+                  <text x="15" y="88" fill="#BEB5A9" font-size="11">dept_name [VARCHAR]</text>
+                  <text x="15" y="106" fill="#BEB5A9" font-size="11">head_name [VARCHAR]</text>
+                  <text x="15" y="124" fill="#BEB5A9" font-size="11">location_block [VARCHAR]</text>
                 </g>
 
                 <!-- ENTITY 2: USERS -->
                 <g transform="translate(90, 280)" filter="url(#shadow)">
-                  <rect width="200" height="170" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1.5" />
+                  <rect width="200" height="170" rx="8" fill="#291C0E" stroke="#5E936C" stroke-width="1.5" />
                   <rect width="200" height="32" rx="8" fill="url(#headerGradCyan)" />
                   <text x="100" y="21" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="13"
                     font-weight="bold" text-anchor="middle">USERS (RBAC)</text>
-                  <text x="15" y="52" fill="#f8fafc" font-size="11">🔑 user_id [PK, INT]</text>
-                  <text x="15" y="70" fill="#94a3b8" font-size="11">name [VARCHAR]</text>
-                  <text x="15" y="88" fill="#94a3b8" font-size="11">email [VARCHAR, UNQ]</text>
-                  <text x="15" y="106" fill="#fcd34d" font-size="11">role [ENUM(ADMIN,STAFF,STUD)]</text>
-                  <text x="15" y="124" fill="#38bdf8" font-size="11">🔗 department_id [FK]</text>
-                  <text x="15" y="142" fill="#94a3b8" font-size="11">phone, roll_no, avatar</text>
-                  <text x="15" y="160" fill="#94a3b8" font-size="11">created_at [TIMESTAMP]</text>
+                  <text x="15" y="52" fill="#F7F3EE" font-size="11">🔑 user_id [PK, INT]</text>
+                  <text x="15" y="70" fill="#BEB5A9" font-size="11">name [VARCHAR]</text>
+                  <text x="15" y="88" fill="#BEB5A9" font-size="11">email [VARCHAR, UNQ]</text>
+                  <text x="15" y="106" fill="#D98C45" font-size="11">role [ENUM(ADMIN,STAFF,STUD)]</text>
+                  <text x="15" y="124" fill="#A78D78" font-size="11">🔗 department_id [FK]</text>
+                  <text x="15" y="142" fill="#BEB5A9" font-size="11">phone, roll_no, avatar</text>
+                  <text x="15" y="160" fill="#BEB5A9" font-size="11">created_at [TIMESTAMP]</text>
                 </g>
 
                 <!-- ENTITY 3: CATEGORIES -->
                 <g transform="translate(440, 50)" filter="url(#shadow)">
-                  <rect width="200" height="140" rx="8" fill="#1e293b" stroke="#a855f7" stroke-width="1.5" />
+                  <rect width="200" height="140" rx="8" fill="#291C0E" stroke="#6E473B" stroke-width="1.5" />
                   <rect width="200" height="32" rx="8" fill="url(#headerGrad)" />
                   <text x="100" y="21" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="13"
                     font-weight="bold" text-anchor="middle">CATEGORIES</text>
-                  <text x="15" y="52" fill="#f8fafc" font-size="11">🔑 category_id [PK, INT]</text>
-                  <text x="15" y="70" fill="#94a3b8" font-size="11">category_name [VARCHAR]</text>
-                  <text x="15" y="88" fill="#38bdf8" font-size="11">🔗 department_id [FK]</text>
-                  <text x="15" y="106" fill="#94a3b8" font-size="11">sla_hours [INT]</text>
-                  <text x="15" y="124" fill="#94a3b8" font-size="11">icon, description</text>
+                  <text x="15" y="52" fill="#F7F3EE" font-size="11">🔑 category_id [PK, INT]</text>
+                  <text x="15" y="70" fill="#BEB5A9" font-size="11">category_name [VARCHAR]</text>
+                  <text x="15" y="88" fill="#A78D78" font-size="11">🔗 department_id [FK]</text>
+                  <text x="15" y="106" fill="#BEB5A9" font-size="11">sla_hours [INT]</text>
+                  <text x="15" y="124" fill="#BEB5A9" font-size="11">icon, description</text>
                 </g>
 
                 <!-- ENTITY 4: COMPLAINTS (CENTRAL) -->
                 <g transform="translate(440, 280)" filter="url(#shadow)">
-                  <rect width="200" height="200" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="2" />
+                  <rect width="200" height="200" rx="8" fill="#291C0E" stroke="#D98C45" stroke-width="2" />
                   <rect width="200" height="32" rx="8" fill="url(#headerGradAmber)" />
                   <text x="100" y="21" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="13"
                     font-weight="bold" text-anchor="middle">COMPLAINTS (CENTRAL)</text>
-                  <text x="15" y="52" fill="#f8fafc" font-size="11">🔑 complaint_id [PK, INT]</text>
-                  <text x="15" y="70" fill="#fcd34d" font-size="11">ticket_no [VARCHAR, UNQ]</text>
-                  <text x="15" y="88" fill="#10b981" font-size="11">🔗 reporter_id [FK -> users]</text>
-                  <text x="15" y="106" fill="#a855f7" font-size="11">🔗 category_id [FK -> cat]</text>
-                  <text x="15" y="124" fill="#38bdf8" font-size="11">🔗 assigned_to [FK -> users]</text>
-                  <text x="15" y="142" fill="#94a3b8" font-size="11">priority [ENUM(Crit,Hi,Med,Low)]</text>
-                  <text x="15" y="160" fill="#94a3b8" font-size="11">status [ENUM(Pend,Assg,Prog..)]</text>
-                  <text x="15" y="178" fill="#94a3b8" font-size="11">title, location, desc</text>
-                  <text x="15" y="194" fill="#94a3b8" font-size="10">created_at, resolved_at</text>
+                  <text x="15" y="52" fill="#F7F3EE" font-size="11">🔑 complaint_id [PK, INT]</text>
+                  <text x="15" y="70" fill="#D98C45" font-size="11">ticket_no [VARCHAR, UNQ]</text>
+                  <text x="15" y="88" fill="#5E936C" font-size="11">🔗 reporter_id [FK -> users]</text>
+                  <text x="15" y="106" fill="#6E473B" font-size="11">🔗 category_id [FK -> cat]</text>
+                  <text x="15" y="124" fill="#A78D78" font-size="11">🔗 assigned_to [FK -> users]</text>
+                  <text x="15" y="142" fill="#BEB5A9" font-size="11">priority [ENUM(Crit,Hi,Med,Low)]</text>
+                  <text x="15" y="160" fill="#BEB5A9" font-size="11">status [ENUM(Pend,Assg,Prog..)]</text>
+                  <text x="15" y="178" fill="#BEB5A9" font-size="11">title, location, desc</text>
+                  <text x="15" y="194" fill="#BEB5A9" font-size="10">created_at, resolved_at</text>
                 </g>
 
                 <!-- ENTITY 5: ASSIGNMENTS -->
                 <g transform="translate(780, 160)" filter="url(#shadow)">
-                  <rect width="200" height="140" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5" />
+                  <rect width="200" height="140" rx="8" fill="#291C0E" stroke="#D98C45" stroke-width="1.5" />
                   <rect width="200" height="32" rx="8" fill="url(#headerGrad)" />
                   <text x="100" y="21" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="13"
                     font-weight="bold" text-anchor="middle">ASSIGNMENTS</text>
-                  <text x="15" y="52" fill="#f8fafc" font-size="11">🔑 assignment_id [PK, INT]</text>
-                  <text x="15" y="70" fill="#f59e0b" font-size="11">🔗 complaint_id [FK]</text>
-                  <text x="15" y="88" fill="#10b981" font-size="11">🔗 assigned_by [FK -> users]</text>
-                  <text x="15" y="106" fill="#10b981" font-size="11">🔗 assigned_to [FK -> users]</text>
-                  <text x="15" y="124" fill="#94a3b8" font-size="11">instructions, assigned_at</text>
+                  <text x="15" y="52" fill="#F7F3EE" font-size="11">🔑 assignment_id [PK, INT]</text>
+                  <text x="15" y="70" fill="#D98C45" font-size="11">🔗 complaint_id [FK]</text>
+                  <text x="15" y="88" fill="#5E936C" font-size="11">🔗 assigned_by [FK -> users]</text>
+                  <text x="15" y="106" fill="#5E936C" font-size="11">🔗 assigned_to [FK -> users]</text>
+                  <text x="15" y="124" fill="#BEB5A9" font-size="11">instructions, assigned_at</text>
                 </g>
 
                 <!-- ENTITY 6: COMPLAINT_UPDATES -->
                 <g transform="translate(780, 360)" filter="url(#shadow)">
-                  <rect width="200" height="140" rx="8" fill="#1e293b" stroke="#ec4899" stroke-width="1.5" />
+                  <rect width="200" height="140" rx="8" fill="#291C0E" stroke="#BEB5A9" stroke-width="1.5" />
                   <rect width="200" height="32" rx="8" fill="url(#headerGrad)" />
                   <text x="100" y="21" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="13"
                     font-weight="bold" text-anchor="middle">COMPLAINT_UPDATES</text>
-                  <text x="15" y="52" fill="#f8fafc" font-size="11">🔑 update_id [PK, INT]</text>
-                  <text x="15" y="70" fill="#f59e0b" font-size="11">🔗 complaint_id [FK]</text>
-                  <text x="15" y="88" fill="#10b981" font-size="11">🔗 updated_by [FK -> users]</text>
-                  <text x="15" y="106" fill="#94a3b8" font-size="11">old_status, new_status</text>
-                  <text x="15" y="124" fill="#94a3b8" font-size="11">notes, created_at</text>
+                  <text x="15" y="52" fill="#F7F3EE" font-size="11">🔑 update_id [PK, INT]</text>
+                  <text x="15" y="70" fill="#D98C45" font-size="11">🔗 complaint_id [FK]</text>
+                  <text x="15" y="88" fill="#5E936C" font-size="11">🔗 updated_by [FK -> users]</text>
+                  <text x="15" y="106" fill="#BEB5A9" font-size="11">old_status, new_status</text>
+                  <text x="15" y="124" fill="#BEB5A9" font-size="11">notes, created_at</text>
                 </g>
 
                 <!-- ENTITY 7: FEEDBACK -->
                 <g transform="translate(440, 540)" filter="url(#shadow)">
-                  <rect width="200" height="130" rx="8" fill="#1e293b" stroke="#06b6d4" stroke-width="1.5" />
+                  <rect width="200" height="130" rx="8" fill="#291C0E" stroke="#A78D78" stroke-width="1.5" />
                   <rect width="200" height="32" rx="8" fill="url(#headerGradCyan)" />
                   <text x="100" y="21" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="13"
                     font-weight="bold" text-anchor="middle">FEEDBACK (1:1)</text>
-                  <text x="15" y="52" fill="#f8fafc" font-size="11">🔑 feedback_id [PK, INT]</text>
-                  <text x="15" y="70" fill="#f59e0b" font-size="11">🔗 complaint_id [FK, UNIQUE]</text>
-                  <text x="15" y="88" fill="#10b981" font-size="11">🔗 student_id [FK -> users]</text>
-                  <text x="15" y="106" fill="#fcd34d" font-size="11">rating [INT, CHECK 1-5]</text>
-                  <text x="15" y="122" fill="#94a3b8" font-size="11">satisfaction_level, comments</text>
+                  <text x="15" y="52" fill="#F7F3EE" font-size="11">🔑 feedback_id [PK, INT]</text>
+                  <text x="15" y="70" fill="#D98C45" font-size="11">🔗 complaint_id [FK, UNIQUE]</text>
+                  <text x="15" y="88" fill="#5E936C" font-size="11">🔗 student_id [FK -> users]</text>
+                  <text x="15" y="106" fill="#D98C45" font-size="11">rating [INT, CHECK 1-5]</text>
+                  <text x="15" y="122" fill="#BEB5A9" font-size="11">satisfaction_level, comments</text>
                 </g>
 
                 <!-- ENTITY 8: ACTIVITY_LOGS -->
                 <g transform="translate(90, 510)" filter="url(#shadow)">
-                  <rect width="200" height="140" rx="8" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.5" />
+                  <rect width="200" height="140" rx="8" fill="#291C0E" stroke="#E1D4C2" stroke-width="1.5" />
                   <rect width="200" height="32" rx="8" fill="url(#headerGrad)" />
                   <text x="100" y="21" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-size="13"
                     font-weight="bold" text-anchor="middle">ACTIVITY_LOGS (AUDIT)</text>
-                  <text x="15" y="52" fill="#f8fafc" font-size="11">🔑 log_id [PK, INT]</text>
-                  <text x="15" y="70" fill="#f59e0b" font-size="11">🔗 complaint_id [FK, Nullable]</text>
-                  <text x="15" y="88" fill="#10b981" font-size="11">🔗 user_id [FK -> users]</text>
-                  <text x="15" y="106" fill="#94a3b8" font-size="11">action_type, sql_executed</text>
-                  <text x="15" y="124" fill="#94a3b8" font-size="11">details, timestamp</text>
+                  <text x="15" y="52" fill="#F7F3EE" font-size="11">🔑 log_id [PK, INT]</text>
+                  <text x="15" y="70" fill="#D98C45" font-size="11">🔗 complaint_id [FK, Nullable]</text>
+                  <text x="15" y="88" fill="#5E936C" font-size="11">🔗 user_id [FK -> users]</text>
+                  <text x="15" y="106" fill="#BEB5A9" font-size="11">action_type, sql_executed</text>
+                  <text x="15" y="124" fill="#BEB5A9" font-size="11">details, timestamp</text>
                 </g>
               </svg>
             </div>

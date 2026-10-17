@@ -1109,16 +1109,16 @@ class CampusApp {
       <head>
         <title>CampusFix Maintenance Ticket Receipt - ${c.ticket_no}</title>
         <style>
-          body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 30px; color: #1e293b; }
-          .header { text-align: center; border-bottom: 2px solid #0f172a; padding-bottom: 15px; margin-bottom: 20px; }
-          .inst-title { font-size: 20px; font-weight: bold; text-transform: uppercase; }
-          .sub-title { font-size: 13px; color: #64748b; margin-top: 4px; }
-          .ticket-box { border: 1px solid #cbd5e1; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+          body { font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; padding: 30px; color: #291C0E; background: #ffffff; }
+          .header { text-align: center; border-bottom: 2px solid #6E473B; padding-bottom: 15px; margin-bottom: 20px; }
+          .inst-title { font-size: 20px; font-weight: bold; text-transform: uppercase; color: #291C0E; }
+          .sub-title { font-size: 13px; color: #6E473B; margin-top: 4px; }
+          .ticket-box { border: 1.5px solid #BEB5A9; border-radius: 8px; padding: 20px; margin-bottom: 20px; background: #FAF6F0; }
           .row { display: flex; justify-content: space-between; margin-bottom: 12px; }
-          .label { font-weight: bold; color: #475569; width: 180px; }
-          .val { flex: 1; }
-          .status { display: inline-block; padding: 4px 12px; border-radius: 99px; background: #e2e8f0; font-weight: bold; }
-          .footer { font-size: 11px; text-align: center; color: #94a3b8; border-top: 1px dashed #cbd5e1; padding-top: 15px; }
+          .label { font-weight: bold; color: #5C4535; width: 180px; }
+          .val { flex: 1; color: #291C0E; }
+          .status { display: inline-block; padding: 4px 12px; border-radius: 99px; background: #E1D4C2; color: #291C0E; font-weight: bold; }
+          .footer { font-size: 11px; text-align: center; color: #826F61; border-top: 1px dashed #BEB5A9; padding-top: 15px; }
           @media print { .no-print { display: none; } }
         </style>
       </head>

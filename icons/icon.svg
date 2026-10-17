@@ -2,60 +2,60 @@
   <defs>
     <!-- Background Gradient -->
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#070a14"/>
-      <stop offset="50%" stop-color="#0f172a"/>
-      <stop offset="100%" stop-color="#1e1b4b"/>
+      <stop offset="0%" stop-color="#181108"/>
+      <stop offset="50%" stop-color="#291C0E"/>
+      <stop offset="100%" stop-color="#462c23"/>
     </linearGradient>
 
     <!-- Shield & Accent Neon Gradient -->
     <linearGradient id="shieldBorderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#38bdf8"/>
-      <stop offset="45%" stop-color="#6366f1"/>
-      <stop offset="100%" stop-color="#a855f7"/>
+      <stop offset="0%" stop-color="#E1D4C2"/>
+      <stop offset="45%" stop-color="#A78D78"/>
+      <stop offset="100%" stop-color="#6E473B"/>
     </linearGradient>
 
     <!-- Academic Building Gradient -->
     <linearGradient id="campusGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#38bdf8"/>
-      <stop offset="100%" stop-color="#818cf8"/>
+      <stop offset="0%" stop-color="#E1D4C2"/>
+      <stop offset="100%" stop-color="#A78D78"/>
     </linearGradient>
 
     <!-- Wrench Chrome Gradient -->
     <linearGradient id="wrenchGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="30%" stop-color="#f0f9ff"/>
-      <stop offset="70%" stop-color="#bae6fd"/>
-      <stop offset="100%" stop-color="#38bdf8"/>
+      <stop offset="30%" stop-color="#F7F3EE"/>
+      <stop offset="70%" stop-color="#BEB5A9"/>
+      <stop offset="100%" stop-color="#A78D78"/>
     </linearGradient>
 
     <!-- Gear Gradient -->
     <linearGradient id="gearGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#38bdf8"/>
-      <stop offset="50%" stop-color="#4f46e5"/>
-      <stop offset="100%" stop-color="#1e1b4b"/>
+      <stop offset="0%" stop-color="#A78D78"/>
+      <stop offset="50%" stop-color="#6E473B"/>
+      <stop offset="100%" stop-color="#291C0E"/>
     </linearGradient>
 
     <!-- Green Check / Resolution Gradient -->
     <linearGradient id="checkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#34d399"/>
-      <stop offset="50%" stop-color="#10b981"/>
-      <stop offset="100%" stop-color="#059669"/>
+      <stop offset="0%" stop-color="#86B392"/>
+      <stop offset="50%" stop-color="#5E936C"/>
+      <stop offset="100%" stop-color="#3b5a43"/>
     </linearGradient>
 
     <!-- Ambient Center Glow -->
     <radialGradient id="ambientGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.32"/>
-      <stop offset="55%" stop-color="#6366f1" stop-opacity="0.14"/>
-      <stop offset="100%" stop-color="#0f172a" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#6E473B" stop-opacity="0.35"/>
+      <stop offset="55%" stop-color="#A78D78" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#291C0E" stop-opacity="0"/>
     </radialGradient>
 
     <!-- Drop Glow Filter -->
     <filter id="glowEffect" x="-25%" y="-25%" width="150%" height="150%">
-      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#38bdf8" flood-opacity="0.45"/>
+      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#6E473B" flood-opacity="0.55"/>
     </filter>
 
     <filter id="checkGlow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="5" stdDeviation="10" flood-color="#10b981" flood-opacity="0.65"/>
+      <feDropShadow dx="0" dy="5" stdDeviation="10" flood-color="#5E936C" flood-opacity="0.65"/>
     </filter>
   </defs>
 
@@ -64,7 +64,7 @@
   
   <!-- Subtle Outer Border Rim -->
   <rect x="2" y="2" width="508" height="508" rx="114" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="3"/>
-  <rect x="5" y="5" width="502" height="502" rx="111" fill="none" stroke="rgba(56,189,248,0.25)" stroke-width="1.5"/>
+  <rect x="5" y="5" width="502" height="502" rx="111" fill="none" stroke="rgba(167,141,120,0.35)" stroke-width="1.5"/>
 
   <!-- Center Ambient Glow -->
   <circle cx="256" cy="256" r="200" fill="url(#ambientGlow)"/>
@@ -77,7 +77,7 @@
              C 400 348, 304 420, 256 444 
              C 208 420, 112 348, 112 236 
              C 112 125, 166 80, 256 80 Z" 
-          fill="#0a1226" fill-opacity="0.92" 
+          fill="#291C0E" fill-opacity="0.92" 
           stroke="url(#shieldBorderGrad)" stroke-width="13" stroke-linejoin="round"/>
     
     <!-- Inner Subtle Accent Rim -->
@@ -94,14 +94,14 @@
     <!-- Pediment Gable Triangle -->
     <polygon points="256,110 178,150 334,150" fill="url(#campusGrad)"/>
     <!-- Entablature bar -->
-    <rect x="172" y="152" width="168" height="8" rx="2" fill="#bae6fd"/>
+    <rect x="172" y="152" width="168" height="8" rx="2" fill="#E1D4C2"/>
     <!-- 4 Classic Campus Pillars -->
-    <rect x="186" y="162" width="14" height="48" rx="2" fill="#7dd3fc"/>
-    <rect x="228" y="162" width="14" height="48" rx="2" fill="#7dd3fc"/>
-    <rect x="270" y="162" width="14" height="48" rx="2" fill="#7dd3fc"/>
-    <rect x="312" y="162" width="14" height="48" rx="2" fill="#7dd3fc"/>
+    <rect x="186" y="162" width="14" height="48" rx="2" fill="#BEB5A9"/>
+    <rect x="228" y="162" width="14" height="48" rx="2" fill="#BEB5A9"/>
+    <rect x="270" y="162" width="14" height="48" rx="2" fill="#BEB5A9"/>
+    <rect x="312" y="162" width="14" height="48" rx="2" fill="#BEB5A9"/>
     <!-- Pillar Base Plinth -->
-    <rect x="172" y="212" width="168" height="8" rx="2" fill="#bae6fd"/>
+    <rect x="172" y="212" width="168" height="8" rx="2" fill="#E1D4C2"/>
   </g>
 
   <!-- Precision Maintenance Gear (Fix Element) -->
@@ -117,9 +117,9 @@
       C -101,108 -105,96 -106,84 L -124,80 L -124,36 L -106,32 
       C -105,20 -101,8 -95,-3 L -105,-19 L -74,-50 L -58,-40 
       C -48,-50 -38,-58 -26,-64 Z
-    " transform="scale(0.68) translate(0, -58)" fill="url(#gearGrad)" stroke="#38bdf8" stroke-width="3.5" opacity="0.95"/>
+    " transform="scale(0.68) translate(0, -58)" fill="url(#gearGrad)" stroke="#A78D78" stroke-width="3.5" opacity="0.95"/>
     <!-- Gear center axle bore -->
-    <circle cx="0" cy="0" r="30" fill="#0a1226" stroke="#38bdf8" stroke-width="5"/>
+    <circle cx="0" cy="0" r="30" fill="#291C0E" stroke="#A78D78" stroke-width="5"/>
   </g>
 
   <!-- Heavy-Duty Solid Chrome Wrench (Maintenance Tool) -->
@@ -140,7 +140,7 @@
       C -20,-118 -36,-116 -28,-105 Z
     " fill="url(#wrenchGrad)" stroke="#0284c7" stroke-width="4" stroke-linejoin="round"/>
     <!-- Ring end center cutout -->
-    <circle cx="10" cy="78" r="16" fill="#0a1226" stroke="#0284c7" stroke-width="3.5"/>
+    <circle cx="10" cy="78" r="16" fill="#291C0E" stroke="#0284c7" stroke-width="3.5"/>
     <!-- Highlight Reflection on shaft -->
     <path d="M 0,-24 L 0,36" stroke="#ffffff" stroke-width="5" stroke-linecap="round" opacity="0.9"/>
   </g>

@@ -60,8 +60,10 @@ campus-fix/
 ├── sw.js                        # Progressive Web App Service Worker (offline cache)
 ├── favicon.ico                  # Browser Favicon
 ├── campus_maintenance_db_dump.sql # Complete MySQL DDL & DML Schema Script
+├── presentation_script_document.html # DBMS Presentation Script & Viva Defense Guide
+├── Campus_Fix_DBMS_Presentation_Script.pdf # Printable Presentation Script & Viva Defense PDF
 ├── css/
-│   └── style.css                # Custom Responsive CSS Design System
+│   └── style.css                # Custom Responsive CSS Design System (Warm Luxury Earth Palette)
 ├── js/
 │   ├── app.js                   # Application UI, state & event bindings
 │   ├── db.js                    # Relational data layer & mock SQL execution engine

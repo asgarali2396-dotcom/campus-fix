@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Campus Fix - DBMS Mini Project Presentation Script &amp; Viva Defense Guide</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+    @page {
+      size: A4;
+      margin: 12mm 14mm 12mm 14mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #1e293b;
+      background: #ffffff;
+      line-height: 1.45;
+      font-size: 12.5px;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Cover / Header Section */
+    .header-card {
+      background: linear-gradient(135deg, #291C0E 0%, #462c23 50%, #6E473B 100%);
+      color: #ffffff;
+      border-radius: 12px;
+      padding: 22px 26px;
+      margin-bottom: 18px;
+      border: 1px solid rgba(167, 141, 120, 0.4);
+      box-shadow: 0 4px 14px rgba(41, 28, 14, 0.2);
+    }
+
+    .badge-pill {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background: rgba(167, 141, 120, 0.25);
+      color: #E1D4C2;
+      border: 1px solid rgba(167, 141, 120, 0.5);
+      margin-bottom: 8px;
+    }
+
+    .project-title {
+      font-size: 24px;
+      font-weight: 800;
+      margin: 0 0 4px 0;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+    }
+
+    .project-subtitle {
+      font-size: 13.5px;
+      color: #BEB5A9;
+      margin: 0 0 14px 0;
+      font-weight: 500;
+    }
+
+    .header-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .meta-box strong {
+      display: block;
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: #94a3b8;
+      margin-bottom: 2px;
+    }
+
+    .meta-box span {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #f8fafc;
+    }
+
+    /* Section Styling */
+    .section-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 18px 0 10px 0;
+      padding-bottom: 5px;
+      border-bottom: 2px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title .icon {
+      font-size: 17px;
+    }
+
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 16px;
+      font-size: 12px;
+    }
+
+    th {
+      background: #f1f5f9;
+      color: #334155;
+      font-weight: 700;
+      text-align: left;
+      padding: 7px 10px;
+      border: 1px solid #cbd5e1;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    td {
+      padding: 7px 10px;
+      border: 1px solid #e2e8f0;
+      color: #334155;
+      vertical-align: middle;
+    }
+
+    tr:nth-child(even) td {
+      background-color: #f8fafc;
+    }
+
+    .roll-badge {
+      display: inline-block;
+      padding: 2px 7px;
+      background: #EAE3D9;
+      color: #6E473B;
+      border-radius: 5px;
+      font-weight: 700;
+      font-size: 10.5px;
+    }
+
+    /* Timeline Box */
+    .timeline-bar {
+      display: flex;
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    .timeline-segment {
+      flex: 1;
+      padding: 7px 8px;
+      text-align: center;
+      border-right: 1px solid #cbd5e1;
+      font-size: 10.5px;
+    }
+
+    .timeline-segment:last-child {
+      border-right: none;
+    }
+
+    .timeline-time {
+      font-weight: 800;
+      color: #6E473B;
+      font-size: 10px;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .timeline-name {
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    /* Speaker Cue Card */
+    .speaker-card {
+      background: #ffffff;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 15px 18px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .speaker-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 8px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .speaker-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .speaker-avatar {
+      width: 32px;
+      height: 32px;
+      background: #f1f5f9;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      border: 1px solid #cbd5e1;
+    }
+
+    .speaker-name-title {
+      line-height: 1.2;
+    }
+
+    .speaker-name {
+      font-size: 14px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    .speaker-role {
+      font-size: 11px;
+      font-weight: 600;
+      color: #475569;
+    }
+
+    .speaker-time-badge {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 10.5px;
+    }
+
+    .script-block {
+      background: #f8fafc;
+      border-left: 4px solid #3b82f6;
+      border-radius: 0 6px 6px 0;
+      padding: 10px 14px;
+      margin-bottom: 10px;
+      font-size: 12px;
+      color: #1e293b;
+    }
+
+    .script-label {
+      font-weight: 700;
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: #2563eb;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .script-text {
+      font-style: italic;
+      color: #334155;
+      line-height: 1.55;
+    }
+
+    .action-block {
+      background: #f0fdf4;
+      border-left: 4px solid #10b981;
+      border-radius: 0 6px 6px 0;
+      padding: 8px 12px;
+      margin-bottom: 8px;
+      font-size: 11.5px;
+    }
+
+    .action-label {
+      font-weight: 700;
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: #059669;
+      margin-bottom: 2px;
+    }
+
+    .handover-block {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      border-radius: 0 6px 6px 0;
+      padding: 6px 12px;
+      font-size: 11px;
+      color: #92400e;
+    }
+
+    .handover-label {
+      font-weight: 700;
+      font-size: 10px;
+      text-transform: uppercase;
+      color: #d97706;
+      margin-bottom: 2px;
+    }
+
+    /* Code Block */
+    pre, code {
+      font-family: 'JetBrains Mono', Consolas, monospace;
+    }
+
+    code {
+      background: #f1f5f9;
+      color: #0f172a;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-size: 11px;
+    }
+
+    pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 8px 10px;
+      border-radius: 6px;
+      font-size: 10.5px;
+      overflow-x: auto;
+      line-height: 1.35;
+      margin: 4px 0;
+    }
+
+    /* Viva Voce Box */
+    .viva-box {
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-bottom: 10px;
+      background: #ffffff;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .viva-q {
+      font-weight: 700;
+      font-size: 12px;
+      color: #0f172a;
+      margin-bottom: 3px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .viva-assignee {
+      font-size: 10px;
+      font-weight: 700;
+      background: #e0e7ff;
+      color: #3730a3;
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    .viva-ans {
+      font-size: 11.5px;
+      color: #334155;
+      line-height: 1.45;
+    }
+
+    /* Page break helpers */
+    .page-break {
+      page-break-after: always;
+      break-after: page;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 10px;
+      color: #94a3b8;
+      margin-top: 14px;
+      padding-top: 6px;
+      border-top: 1px solid #e2e8f0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= PAGE 1 ================= -->
+  <div class="header-card">
+    <div class="badge-pill">DBMS Academic Mini Project • Presentation Script &amp; Viva Guide</div>
+    <h1 class="project-title">Campus Fix 🛠️</h1>
+    <div class="project-subtitle">Campus Maintenance &amp; Complaint Management System — 3NF/BCNF Schema &amp; ACID Transactions</div>
+    <div class="header-meta-grid">
+      <div class="meta-box">
+        <strong>Academic Course</strong>
+        <span>Database Management Systems (DBMS)</span>
+      </div>
+      <div class="meta-box">
+        <strong>Project Guide</strong>
+        <span>Prof. P. R. Nerkar</span>
+      </div>
+      <div class="meta-box">
+        <strong>Database Engine</strong>
+        <span>MySQL 8.0+ / PostgreSQL / IndexedDB</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <span class="icon">👥</span> Team Roster &amp; Individual Contributions
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 26%;">Speaker &amp; Roll No.</th>
+        <th style="width: 24%;">Assigned Role</th>
+        <th style="width: 38%;">Specific DBMS Contribution &amp; Defense Domain</th>
+        <th style="width: 12%;">Duration</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Sarth Santosh Pande</strong><br><span class="roll-badge">Roll No. 28</span></td>
+        <td>Team Lead &amp; Architect</td>
+        <td>Project Motivation, Problem Statement, System Architecture &amp; Role-Based Access Control (RBAC)</td>
+        <td>0:00 - 2:00</td>
+      </tr>
+      <tr>
+        <td><strong>Takshak Rahul Sirsat</strong><br><span class="roll-badge">Roll No. 30</span></td>
+        <td>Database Modeler</td>
+        <td>Relational Schema, E-R Modeling, 8 Entities, 1:M &amp; 1:1 Cardinalities, PK/FK &amp; Cascades</td>
+        <td>2:00 - 4:00</td>
+      </tr>
+      <tr>
+        <td><strong>Manthan Vinod Dhamal</strong><br><span class="roll-badge">Roll No. 35</span></td>
+        <td>Normalization Lead</td>
+        <td>Relational Theory (1NF &rarr; 2NF &rarr; 3NF &rarr; BCNF) &amp; Anomaly Elimination Proofs</td>
+        <td>4:00 - 6:00</td>
+      </tr>
+      <tr>
+        <td><strong>Ali Asgar Yusuf Ali</strong><br><span class="roll-badge">Roll No. 40</span></td>
+        <td>Query Optimization Lead</td>
+        <td>Advanced SQL: Multi-Table JOINs, GROUP BY Aggregations, SLA Metrics &amp; Live SQL Studio</td>
+        <td>6:00 - 8:00</td>
+      </tr>
+      <tr>
+        <td><strong>Rohit Sudhir Karpe</strong><br><span class="roll-badge">Roll No. 53</span></td>
+        <td>Transaction Engineer</td>
+        <td>Automated Database Triggers, ACID Properties, Master Activity Audit Trail &amp; Conclusion</td>
+        <td>8:00 - 10:00</td>
+      </tr>
+      <tr>
+        <td><strong>Optional 6th Member / Shared</strong><br><span class="roll-badge">Live Demo Lead</span></td>
+        <td>UI &amp; System Integration</td>
+        <td>Live End-to-End Workflow: Ticket Creation &rarr; Admin Dispatch &rarr; Real-Time SQL Stream &rarr; Feedback</td>
+        <td>10:00 - 11:30</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">
+    <span class="icon">⏱️</span> Presentation Flow Timeline (10 - 12 Minutes Total)
+  </div>
+
+  <div class="timeline-bar">
+    <div class="timeline-segment">
+      <span class="timeline-time">0:00 - 2:00</span>
+      <span class="timeline-name">Sarth (28)</span>
+      <div style="font-size:9.5px; color:#64748b;">Intro &amp; RBAC</div>
+    </div>
+    <div class="timeline-segment">
+      <span class="timeline-time">2:00 - 4:00</span>
+      <span class="timeline-name">Takshak (30)</span>
+      <div style="font-size:9.5px; color:#64748b;">ER &amp; Schema</div>
+    </div>
+    <div class="timeline-segment">
+      <span class="timeline-time">4:00 - 6:00</span>
+      <span class="timeline-name">Manthan (35)</span>
+      <div style="font-size:9.5px; color:#64748b;">3NF &amp; BCNF</div>
+    </div>
+    <div class="timeline-segment">
+      <span class="timeline-time">6:00 - 8:00</span>
+      <span class="timeline-name">Ali Asgar (40)</span>
+      <div style="font-size:9.5px; color:#64748b;">SQL Studio</div>
+    </div>
+    <div class="timeline-segment">
+      <span class="timeline-time">8:00 - 10:00</span>
+      <span class="timeline-name">Rohit (53)</span>
+      <div style="font-size:9.5px; color:#64748b;">Triggers &amp; ACID</div>
+    </div>
+    <div class="timeline-segment">
+      <span class="timeline-time">10:00 - 12:00</span>
+      <span class="timeline-name">All Team</span>
+      <div style="font-size:9.5px; color:#64748b;">Viva Defense</div>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- ================= PAGE 2 ================= -->
+  <div class="section-title">
+    <span class="icon">🎙️</span> Speaker Cue Cards (Spoken Scripts &amp; Live Actions)
+  </div>
+
+  <!-- SPEAKER 1 -->
+  <div class="speaker-card">
+    <div class="speaker-header">
+      <div class="speaker-info">
+        <div class="speaker-avatar">👨‍🎓</div>
+        <div class="speaker-name-title">
+          <div class="speaker-name">Speaker 1: Sarth Santosh Pande</div>
+          <div class="speaker-role">Roll No. 28 • Team Lead &amp; System Architect</div>
+        </div>
+      </div>
+      <div class="speaker-time-badge">⏱️ 0:00 – 2:00 (2 Mins)</div>
+    </div>
+
+    <div class="script-block">
+      <div class="script-label">🗣️ What to Say (Spoken Dialogue):</div>
+      <div class="script-text">
+        "Respected guide Prof. P. R. Nerkar Sir, and dear friends. A very good morning to all of you.<br><br>
+        Today, our team is proud to present our DBMS Mini Project titled: <strong>'Campus Fix — Campus Maintenance and Complaint Management System'</strong>.<br><br>
+        In an educational campus, hundreds of infrastructure issues occur daily—such as power failures, laboratory equipment faults, and network downtime. Traditional maintenance relies on paper registers or phone calls, leading to ticket loss, zero staff accountability, and no audit trails.<br><br>
+        To solve this, we designed <strong>Campus Fix</strong>: a fully relational, normalized database system. We implemented <strong>Role-Based Access Control (RBAC)</strong> across three primary tiers: <strong>Students</strong> (who lodge geotagged tickets), <strong>Staff Technicians</strong> (assigned by department), and <strong>Administrators</strong> (who dispatch work orders and monitor SLAs).<br><br>
+        Our backend database dump is fully production-ready in MySQL and PostgreSQL. I now hand over to <strong>Takshak</strong> to explain our Relational Database Design and Entity-Relationship model."
+      </div>
+    </div>
+
+    <div class="action-block">
+      <div class="action-label">🖥️ What to Show on Screen:</div>
+      Open <code>index.html</code> in browser. Point to the top brand banner <em>"Campus Fix • Guided by Prof. P. R. Nerkar"</em>. Briefly highlight the dashboard cards and role switcher dropdown.
+    </div>
+
+    <div class="handover-block">
+      <div class="handover-label">🔄 Handover Line:</div>
+      <em>"Now, Takshak will explain the E-R Diagram, our 8 relational entities, and integrity constraints."</em>
+    </div>
+  </div>
+
+  <!-- SPEAKER 2 -->
+  <div class="speaker-card">
+    <div class="speaker-header">
+      <div class="speaker-info">
+        <div class="speaker-avatar">👨‍🎓</div>
+        <div class="speaker-name-title">
+          <div class="speaker-name">Speaker 2: Takshak Rahul Sirsat</div>
+          <div class="speaker-role">Roll No. 30 • Database Modeler</div>
+        </div>
+      </div>
+      <div class="speaker-time-badge">⏱️ 2:00 – 4:00 (2 Mins)</div>
+    </div>
+
+    <div class="script-block">
+      <div class="script-label">🗣️ What to Say (Spoken Dialogue):</div>
+      <div class="script-text">
+        "Thank you, Sarth. Respected Sir, I will walk you through the architectural foundation of our database: the <strong>Entity-Relationship Model and Relational Schema</strong>.<br><br>
+        Our database consists of <strong>8 core relational tables</strong>:<br>
+        1. <code>departments</code>: Divisions like Electrical, IT, Civil, Sanitation, and Labs.<br>
+        2. <code>users</code>: Role-based user records linked with departmental foreign keys.<br>
+        3. <code>categories</code>: Maps issue types with target SLA resolution hours.<br>
+        4. <code>complaints</code>: The central operational entity storing ticket numbers, reporter IDs, locations, priorities, and statuses.<br>
+        5. <code>assignments</code>: Administrator staff allocation orders with instructions.<br>
+        6. <code>complaint_updates</code>: Chronological technician work notes.<br>
+        7. <code>feedback</code>: 1-to-5 star student satisfaction reviews.<br>
+        8. <code>activity_logs</code>: Immutable transaction logs.<br><br>
+        <strong>Cardinalities &amp; Integrity:</strong><br>
+        • Department to Categories is 1:M; Category to Complaints is 1:M.<br>
+        • Student to Complaints is 1:M, but Complaint to Feedback is a <strong>strict 1:1 relationship</strong> enforced via a <code>UNIQUE</code> constraint on <code>complaint_id</code>.<br>
+        • We enforce <code>ON DELETE CASCADE</code> on dependent child records, <code>ON DELETE SET NULL</code> on <code>assigned_to</code>, and a <code>CHECK (rating &gt;= 1 AND rating &lt;= 5)</code> constraint on student ratings."
+      </div>
+    </div>
+
+    <div class="action-block">
+      <div class="action-label">🖥️ What to Show on Screen:</div>
+      Click the <strong>🗄️ DBMS Studio</strong> button in the navigation bar. Stay on Tab 1 (<strong>E-R Diagram</strong>). Point out the primary keys (PK), foreign keys (FK), and the 1:1 relation connecting <code>complaints</code> and <code>feedback</code>.
+    </div>
+
+    <div class="handover-block">
+      <div class="handover-label">🔄 Handover Line:</div>
+      <em>"I now invite Manthan to present our Normalization proofs from 1NF to BCNF."</em>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- ================= PAGE 3 ================= -->
+
+  <!-- SPEAKER 3 -->
+  <div class="speaker-card">
+    <div class="speaker-header">
+      <div class="speaker-info">
+        <div class="speaker-avatar">👨‍🎓</div>
+        <div class="speaker-name-title">
+          <div class="speaker-name">Speaker 3: Manthan Vinod Dhamal</div>
+          <div class="speaker-role">Roll No. 35 • Relational Theory &amp; Normalization Lead</div>
+        </div>
+      </div>
+      <div class="speaker-time-badge">⏱️ 4:00 – 6:00 (2 Mins)</div>
+    </div>
+
+    <div class="script-block">
+      <div class="script-label">🗣️ What to Say (Spoken Dialogue):</div>
+      <div class="script-text">
+        "Thank you, Takshak. Respected Sir, in database engineering, poor design leads to Insertion, Update, and Deletion anomalies. My focus was mathematically proving that our schema satisfies <strong>Third Normal Form (3NF)</strong> and <strong>Boyce-Codd Normal Form (BCNF)</strong>.<br><br>
+        • <strong>1NF (Atomic Attributes):</strong> We eliminated all repeating groups and comma-separated tags. Every column holds indivisible values, and every table has a defined primary key.<br>
+        • <strong>2NF (No Partial Dependencies):</strong> A table in 1NF is in 2NF if all non-prime attributes are fully functionally dependent on the entire primary key. In assignments, technician details are not stored directly; they reference <code>user_id</code>, eliminating partial key dependencies.<br>
+        • <strong>3NF (No Transitive Dependencies):</strong> 3NF mandates that no non-prime attribute depends transitively on a primary key (X &rarr; Y &rarr; Z). Initially, <code>complaint_id</code> &rarr; <code>category_id</code> &rarr; <code>dept_name</code>. If department names changed, update anomalies would occur across complaints. We decomposed this into independent tables: <code>departments</code>, <code>categories</code>, and <code>complaints</code>.<br>
+        • <strong>BCNF (Strict Superkeys):</strong> In the <code>feedback</code> table, both <code>feedback_id</code> and <code>complaint_id</code> act as candidate keys, satisfying BCNF with zero redundancy."
+      </div>
+    </div>
+
+    <div class="action-block">
+      <div class="action-label">🖥️ What to Show on Screen:</div>
+      Inside the DBMS Studio modal, switch to Tab 3 (<strong>Normalization Proofs</strong>). Show the interactive cards comparing the <em>"Before (Non-Normalized)"</em> anomaly vs. <em>"After (3NF Decomposed)"</em> structure.
+    </div>
+
+    <div class="handover-block">
+      <div class="handover-label">🔄 Handover Line:</div>
+      <em>"Now, Ali Asgar will demonstrate our SQL queries and live SQL sandbox execution."</em>
+    </div>
+  </div>
+
+  <!-- SPEAKER 4 -->
+  <div class="speaker-card">
+    <div class="speaker-header">
+      <div class="speaker-info">
+        <div class="speaker-avatar">👨‍🎓</div>
+        <div class="speaker-name-title">
+          <div class="speaker-name">Speaker 4: Ali Asgar Yusuf Ali</div>
+          <div class="speaker-role">Roll No. 40 • Query Optimization &amp; SQL Studio Lead</div>
+        </div>
+      </div>
+      <div class="speaker-time-badge">⏱️ 6:00 – 8:00 (2 Mins)</div>
+    </div>
+
+    <div class="script-block">
+      <div class="script-label">🗣️ What to Say (Spoken Dialogue):</div>
+      <div class="script-text">
+        "Thank you, Manthan. Respected Sir, my contribution focused on crafting optimized SQL queries for reporting and building our <strong>Live SQL Query Sandbox</strong>.<br><br>
+        Let me run our core queries live:<br>
+        1. <strong>Multi-Table Relational JOIN:</strong> We join 4 relational tables (<code>complaints</code>, <code>users</code>, <code>categories</code>, and <code>departments</code>) to retrieve student names and departments without storing redundant text.<br>
+        2. <strong>Department Performance &amp; SLA Aggregation:</strong><br>
+        <code>SELECT d.dept_name, COUNT(c.complaint_id) AS total, SUM(CASE WHEN c.status IN ('Resolved','Closed') THEN 1 ELSE 0 END) AS resolved FROM departments d LEFT JOIN categories cat ON d.department_id = cat.department_id LEFT JOIN complaints c ON cat.category_id = c.category_id GROUP BY d.dept_name;</code><br>
+        Here we use a <code>LEFT OUTER JOIN</code> with <code>GROUP BY</code> and conditional <code>SUM(CASE ...)</code> so departments with zero complaints are not lost.<br><br>
+        Our built-in SQL Sandbox also supports live DDL queries like <code>SHOW TABLES</code> and <code>DESCRIBE complaints</code> with real-time execution duration in milliseconds."
+      </div>
+    </div>
+
+    <div class="action-block">
+      <div class="action-label">🖥️ What to Show on Screen:</div>
+      Switch to Tab 2 (<strong>Live SQL Sandbox</strong>). Click Preset Query 1 &rarr; Click <strong>▶ Run SQL [Ctrl+Enter]</strong>. Show the resulting data table. Then click Preset Query 2 and run it live to show department counts.
+    </div>
+
+    <div class="handover-block">
+      <div class="handover-label">🔄 Handover Line:</div>
+      <em>"I now hand over to Rohit to present our Database Triggers, ACID transactions, and audit logs."</em>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- ================= PAGE 4 ================= -->
+
+  <!-- SPEAKER 5 -->
+  <div class="speaker-card">
+    <div class="speaker-header">
+      <div class="speaker-info">
+        <div class="speaker-avatar">👨‍🎓</div>
+        <div class="speaker-name-title">
+          <div class="speaker-name">Speaker 5: Rohit Sudhir Karpe</div>
+          <div class="speaker-role">Roll No. 53 • Transaction &amp; Automation Engineer</div>
+        </div>
+      </div>
+      <div class="speaker-time-badge">⏱️ 8:00 – 10:00 (2 Mins)</div>
+    </div>
+
+    <div class="script-block">
+      <div class="script-label">🗣️ What to Say (Spoken Dialogue):</div>
+      <div class="script-text">
+        "Thank you, Ali. Respected Sir, to guarantee that business logic is enforced at the database layer, we engineered <strong>Automated Database Triggers</strong> and managed <strong>ACID Transactions</strong>.<br><br>
+        We implemented <strong>3 essential triggers</strong> in our MySQL DDL:<br>
+        1. <code>trg_after_complaint_assigned</code>: An <code>AFTER INSERT</code> trigger on <code>assignments</code>. As soon as an admin dispatches a technician, the trigger automatically flips complaint status from 'Pending' to 'Assigned' and links <code>assigned_to</code>.<br>
+        2. <code>trg_auto_close_on_feedback</code>: An <code>AFTER INSERT</code> trigger on <code>feedback</code> that auto-transitions the ticket to 'Closed' and stamps <code>closed_at = NOW()</code>.<br>
+        3. <code>trg_audit_status_update</code>: An <code>AFTER UPDATE</code> trigger on <code>complaints</code> logging all status transitions into <code>activity_logs</code>.<br><br>
+        <strong>ACID Guarantees:</strong> Operations execute inside atomic transactions (<code>BEGIN TRANSACTION ... COMMIT</code>). If any table insertion fails, changes rollback immediately, ensuring Consistency and Isolation.<br><br>
+        To conclude: Campus Fix successfully demonstrates relational modeling, normal forms, triggers, and transactions in a real-world institutional platform. We are now ready for viva questions."
+      </div>
+    </div>
+
+    <div class="action-block">
+      <div class="action-label">🖥️ What to Show on Screen:</div>
+      Switch to Tab 4 (<strong>DDL Scripts &amp; Triggers</strong>). Scroll down to the trigger definitions. Then click the top <strong>⚡ Live SQL</strong> drawer button to show live SQL logs being captured in real-time.
+    </div>
+
+    <div class="handover-block">
+      <div class="handover-label">🔄 Handover Line:</div>
+      <em>"Sir, our entire team is now open for your viva voce questions. Thank you!"</em>
+    </div>
+  </div>
+
+  <!-- SPEAKER 6 / OPTIONAL LIVE DEMO FLOW -->
+  <div class="speaker-card" style="border-style: dashed; background: #fafafa;">
+    <div class="speaker-header">
+      <div class="speaker-info">
+        <div class="speaker-avatar">💻</div>
+        <div class="speaker-name-title">
+          <div class="speaker-name">Speaker 6 (or Shared): Dedicated Live Workflow Demo</div>
+          <div class="speaker-role">Frontend Integration &amp; Live System Demo Lead</div>
+        </div>
+      </div>
+      <div class="speaker-time-badge">⏱️ 10:00 – 11:30 (1.5 Mins)</div>
+    </div>
+
+    <div class="script-block" style="border-left-color: #8b5cf6;">
+      <div class="script-label" style="color: #7c3aed;">🗣️ What to Say (Live Demo Walkthrough):</div>
+      <div class="script-text">
+        "Sir, let me demonstrate our complete relational lifecycle in action:<br>
+        1. <strong>Lodge Complaint:</strong> As student Sarth Pande, I report a broken projector in Seminar Hall 1. The RDBMS engine executes an atomic <code>INSERT INTO complaints</code>.<br>
+        2. <strong>Live SQL Drawer:</strong> Notice the Live SQL Drawer on the right immediately logs the SQL statement.<br>
+        3. <strong>Admin Dispatch:</strong> We switch to Admin Prof. P. R. Nerkar and assign technician Amit Verma. Trigger 1 executes instantly, transitioning the ticket to 'Assigned'.<br>
+        4. <strong>Resolution &amp; Feedback:</strong> The technician submits work notes, marks it 'Resolved', and the student rates it 5 stars. Trigger 2 closes the ticket automatically."
+      </div>
+    </div>
+
+    <div class="action-block">
+      <div class="action-label">🖥️ Live Screen Steps:</div>
+      Click "+ Report Issue" &rarr; Submit ticket &rarr; Switch profile to Admin &rarr; Assign technician &rarr; Show status badge update in real-time.
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- ================= PAGE 5 ================= -->
+  <div class="section-title">
+    <span class="icon">🎯</span> Academic Viva Voce Defense Sheet (Questions &amp; Model Answers)
+  </div>
+
+  <div class="viva-box">
+    <div class="viva-q">
+      <span>Q1: "Why is the complaints table in 3NF and not just 2NF?"</span>
+      <span class="viva-assignee">Answered by: Manthan (Roll 35)</span>
+    </div>
+    <div class="viva-ans">
+      <strong>Model Answer:</strong> "Sir, in 2NF, transitive dependencies can still exist. In our domain, <code>department_name</code> depends on <code>category_id</code>, which depends on <code>complaint_id</code>. If we kept <code>dept_name</code> inside <code>complaints</code>, any department update would require updating hundreds of complaint records. Decomposing it into <code>departments</code> and <code>categories</code> removes transitive dependencies and satisfies 3NF."
+    </div>
+  </div>
+
+  <div class="viva-box">
+    <div class="viva-q">
+      <span>Q2: "What happens if an admin tries to delete a department? Will tickets be lost?"</span>
+      <span class="viva-assignee">Answered by: Takshak (Roll 30)</span>
+    </div>
+    <div class="viva-ans">
+      <strong>Model Answer:</strong> "Sir, we have set <code>ON DELETE RESTRICT</code> on the <code>categories</code> &rarr; <code>departments</code> foreign key. The database rejects the deletion of a department if active categories or complaints reference it. On <code>users.department_id</code>, we set <code>ON DELETE SET NULL</code> so staff accounts are preserved."
+    </div>
+  </div>
+
+  <div class="viva-box">
+    <div class="viva-q">
+      <span>Q3: "Why did you use database triggers instead of handling status updates in frontend JavaScript?"</span>
+      <span class="viva-assignee">Answered by: Rohit (Roll 53)</span>
+    </div>
+    <div class="viva-ans">
+      <strong>Model Answer:</strong> "Sir, frontend validation can be bypassed or disabled. Database triggers execute directly in the RDBMS engine. Whether a record is inserted through our web UI, a mobile client, or direct SQL script in MySQL Workbench, the trigger guarantees that status transitions and audit logs are recorded 100% consistently."
+    </div>
+  </div>
+
+  <div class="viva-box">
+    <div class="viva-q">
+      <span>Q4: "Can you explain the difference between WHERE and HAVING in your SQL queries?"</span>
+      <span class="viva-assignee">Answered by: Ali Asgar (Roll 40)</span>
+    </div>
+    <div class="viva-ans">
+      <strong>Model Answer:</strong> "Sir, the <code>WHERE</code> clause filters individual records before aggregation. <code>HAVING</code> filters group-level results after <code>GROUP BY</code>. For example, to filter complaints lodged in 2026, we use <code>WHERE YEAR(created_at) = 2026</code>. To find departments with more than 5 complaints, we use <code>GROUP BY dept_name HAVING COUNT(*) &gt; 5</code>."
+    </div>
+  </div>
+
+  <div class="viva-box">
+    <div class="viva-q">
+      <span>Q5: "How is the 1:1 relationship between complaints and feedback enforced?"</span>
+      <span class="viva-assignee">Answered by: Takshak / Sarth</span>
+    </div>
+    <div class="viva-ans">
+      <strong>Model Answer:</strong> "Sir, each complaint should have at most one feedback review. We enforce this at the schema level by placing a <code>UNIQUE</code> constraint on <code>feedback.complaint_id</code> in addition to its Foreign Key. Any attempt to insert a second review for the same ticket triggers a duplicate key error."
+    </div>
+  </div>
+
+  <div class="footer">
+    Campus Fix DBMS Mini Project • Academic Year 2026 • Prepared for Prof. P. R. Nerkar • Department of Computer Engineering
+  </div>
+
+</body>
+</html>

@@ -1,5 +1,5 @@
 // CampusFix PWA Service Worker
-const CACHE_NAME = 'campusfix-dbms-v3.2';
+const CACHE_NAME = 'campusfix-dbms-v3.3';
 const STATIC_ASSETS = [
   './',
   './index.html',
