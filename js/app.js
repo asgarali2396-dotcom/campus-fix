@@ -172,44 +172,61 @@ class CampusApp {
     if (nameEl) nameEl.textContent = this.currentUser.name;
     if (avatarEl) avatarEl.textContent = this.currentUser.avatar || '👤';
     if (roleEl) {
-      roleEl.textContent = this.currentUser.role;
+      if (this.currentUser.role === 'STAFF') {
+        const dept = window.db.getDepartments().find(d => d.department_id === this.currentUser.department_id);
+        roleEl.textContent = `STAFF • ${dept?.dept_code || 'MAINT'}`;
+      } else {
+        roleEl.textContent = this.currentUser.role;
+      }
       roleEl.className = `role-badge role-${this.currentUser.role.toLowerCase()}`;
     }
 
     // Role-dependent UI visibility
     const reportBtn = document.getElementById('btn-header-new-complaint');
     if (reportBtn) {
-      // Everyone can report or students specifically
       reportBtn.style.display = 'inline-flex';
     }
+
+    // Update Quick Role Switcher Buttons active state
+    const quickStudent = document.getElementById('quick-btn-student');
+    const quickAdmin = document.getElementById('quick-btn-admin');
+    const quickStaff = document.getElementById('quick-btn-staff');
+    if (quickStudent) quickStudent.classList.toggle('active', this.currentUser.role === 'STUDENT');
+    if (quickAdmin) quickAdmin.classList.toggle('active', this.currentUser.role === 'ADMIN');
+    if (quickStaff) quickStaff.classList.toggle('active', this.currentUser.role === 'STAFF');
 
     // Update Banner subtitle
     const rbacNotice = document.getElementById('rbac-current-perspective');
     if (rbacNotice) {
       if (this.currentUser.role === 'ADMIN') {
-        rbacNotice.innerHTML = `Viewing as <strong>Administrator</strong> (Full permissions: triage, assign staff, oversee SLA & audit logs)`;
+        rbacNotice.innerHTML = `Viewing as <strong>Campus Administrator</strong> (Full permissions: triage tickets, dispatch maintenance staff, oversee SLAs &amp; ACID audit logs)`;
       } else if (this.currentUser.role === 'STAFF') {
         const dept = window.db.getDepartments().find(d => d.department_id === this.currentUser.department_id);
-        rbacNotice.innerHTML = `Viewing as <strong>Department Staff</strong> [${dept?.dept_name || 'Staff'}] (Can accept, inspect & resolve tickets)`;
+        rbacNotice.innerHTML = `Viewing as <strong>Maintenance Staff</strong> [${this.currentUser.name} — ${dept?.dept_name || 'Maintenance'}]. Displaying assigned work orders.`;
       } else {
-        rbacNotice.innerHTML = `Viewing as <strong>Student / Reporter</strong> [Roll: ${this.currentUser.roll_no || 'N/A'}] (Submit issues, track timeline & provide feedback)`;
+        rbacNotice.innerHTML = `Viewing as <strong>Student / Reporter</strong> [Roll: ${this.currentUser.roll_no || '28'}]. Report issues, track lifecycle &amp; provide feedback upon resolution.`;
       }
     }
   }
 
   // ==========================================
-  // DUAL-PANEL SIGN IN PAGE (ADMIN & STUDENT)
+  // 3-ROLE ACCESS PORTAL (STUDENT, ADMIN, STAFF)
   // ==========================================
-  openSignInPage(mode = null) {
+  openSignInPage(role = null) {
     const overlay = document.getElementById('auth-page-modal');
     if (!overlay) return;
 
-    // If no mode specified, default to the opposite role of current user or admin
-    if (!mode) {
-      mode = this.currentUser && this.currentUser.role === 'ADMIN' ? 'student' : 'admin';
+    if (!role) {
+      if (this.currentUser && this.currentUser.role === 'ADMIN') {
+        role = 'staff';
+      } else if (this.currentUser && this.currentUser.role === 'STAFF') {
+        role = 'student';
+      } else {
+        role = 'admin';
+      }
     }
 
-    this.setAuthSliderMode(mode);
+    this.setAuthRoleTab(role);
     overlay.classList.add('open');
     overlay.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
@@ -224,14 +241,54 @@ class CampusApp {
     document.body.style.overflow = '';
   }
 
-  setAuthSliderMode(mode) {
-    const container = document.getElementById('auth-slider-container');
-    if (!container) return;
+  setAuthRoleTab(role) {
+    const tabs = ['student', 'admin', 'staff'];
+    tabs.forEach(r => {
+      const btn = document.getElementById(`tab-btn-${r}`);
+      const pane = document.getElementById(`auth-pane-${r}`);
+      if (btn) btn.classList.toggle('active', r === role);
+      if (pane) pane.classList.toggle('active', r === role);
+    });
 
-    if (mode === 'student') {
-      container.classList.add('right-panel-active');
+    // Update Dynamic Info Banner
+    const emblemEl = document.getElementById('info-role-emblem');
+    const titleEl = document.getElementById('info-role-title');
+    const descEl = document.getElementById('info-role-desc');
+    const highlightsEl = document.getElementById('info-dbms-highlights');
+
+    if (role === 'admin') {
+      if (emblemEl) emblemEl.textContent = '🛡️';
+      if (titleEl) titleEl.textContent = 'Admin Access';
+      if (descEl) descEl.textContent = 'Chief Campus Infrastructure Administrator. Full authority to triage incoming complaints, allocate qualified department staff with instructions, and oversee SLA deadlines.';
+      if (highlightsEl) {
+        highlightsEl.innerHTML = `
+          <div class="dbms-bullet"><span class="bullet-check">✓</span><span><strong>Administrator Dispatch:</strong> Inserts assignment orders with FK references.</span></div>
+          <div class="dbms-bullet"><span class="bullet-check">✓</span><span><strong>Automated Trigger 1:</strong> Automatically transitions ticket to 'Assigned' state.</span></div>
+          <div class="dbms-bullet"><span class="bullet-check">✓</span><span><strong>ACID Audit Trail:</strong> Every dispatch committed with rollback safety.</span></div>
+        `;
+      }
+    } else if (role === 'staff') {
+      if (emblemEl) emblemEl.textContent = '🔧';
+      if (titleEl) titleEl.textContent = 'Maintenance Staff Access';
+      if (descEl) descEl.textContent = 'Department Maintenance Technician Dashboard. View work orders assigned to you, advance state from Assigned ➔ In-Process ➔ Solved, and record technical field notes.';
+      if (highlightsEl) {
+        highlightsEl.innerHTML = `
+          <div class="dbms-bullet"><span class="bullet-check">✓</span><span><strong>Assigned Work Orders:</strong> Filtered view showing problems assigned to your Staff ID.</span></div>
+          <div class="dbms-bullet"><span class="bullet-check">✓</span><span><strong>Status Progression:</strong> Advance from Assigned ➔ In-Process ➔ Solved / Resolved.</span></div>
+          <div class="dbms-bullet"><span class="bullet-check">✓</span><span><strong>Chronological Work Logs:</strong> Field notes saved to <code>complaint_updates</code> table.</span></div>
+        `;
+      }
     } else {
-      container.classList.remove('right-panel-active');
+      if (emblemEl) emblemEl.textContent = '👨‍🎓';
+      if (titleEl) titleEl.textContent = 'Student Access';
+      if (descEl) descEl.textContent = 'Submit geotagged complaints across classrooms, hostels, and labs. Track real-time progress through 5 lifecycle stages, and provide 1-to-5 star reviews upon resolution.';
+      if (highlightsEl) {
+        highlightsEl.innerHTML = `
+          <div class="dbms-bullet"><span class="bullet-check">✓</span><span><strong>Relational Integrity:</strong> Strict 1:1 constraint between Complaints &amp; Feedback.</span></div>
+          <div class="dbms-bullet"><span class="bullet-check">✓</span><span><strong>CHECK Constraint:</strong> Student rating strictly bounded between 1 and 5 stars.</span></div>
+          <div class="dbms-bullet"><span class="bullet-check">✓</span><span><strong>Auto-Closure Trigger 2:</strong> Feedback submission auto-closes ticket.</span></div>
+        `;
+      }
     }
   }
 
@@ -266,8 +323,35 @@ class CampusApp {
     if (pwdInput) pwdInput.value = 'student123';
   }
 
+  fillStudentDemoCredentials(userId = 2) {
+    const select = document.getElementById('student-persona-select');
+    if (select) select.value = String(userId);
+    this.onStudentPersonaChange(userId);
+    this.showToast('Autofilled demo credentials for Student (Roll 28 — Sarth Pande)', 'info');
+  }
+
   showStudentCredentialsHint() {
     this.showToast('Student Demo Credentials: Select any Roll No from dropdown (Password: student123)', 'info');
+  }
+
+  onStaffPersonaChange(userId) {
+    const user = window.db.getUserById(userId);
+    if (!user) return;
+    const emailInput = document.getElementById('staff-email-input');
+    const pwdInput = document.getElementById('staff-password-input');
+    if (emailInput) emailInput.value = user.email || `STAFF-00${user.user_id}`;
+    if (pwdInput) pwdInput.value = 'staff123';
+  }
+
+  fillStaffDemoCredentials(userId = 6) {
+    const select = document.getElementById('staff-persona-select');
+    if (select) select.value = String(userId);
+    this.onStaffPersonaChange(userId);
+    this.showToast('Autofilled demo credentials for Maintenance Staff (Rajesh Sharma • ELEC)', 'info');
+  }
+
+  showStaffCredentialsHint() {
+    this.showToast('Staff Demo Credentials: Select any technician from dropdown (Password: staff123)', 'info');
   }
 
   triggerCinematicLoginBurst(emblemText, callback) {
@@ -286,8 +370,8 @@ class CampusApp {
       setTimeout(() => {
         burstLayer.classList.remove('active');
         this.closeSignInPage();
-      }, 400);
-    }, 650);
+      }, 350);
+    }, 550);
   }
 
   handleAdminLoginSubmit(e) {
@@ -295,10 +379,8 @@ class CampusApp {
     const btn = document.getElementById('btn-admin-login');
     if (btn) btn.disabled = true;
 
-    // Trigger radiating web / pulse animation from video
     this.triggerCinematicLoginBurst('🛡️', () => {
-      // Prof. P. R. Nerkar is Admin (user_id = 1)
-      this.switchUser(1);
+      this.switchUser(1); // Prof. P. R. Nerkar (Admin)
       this.showToast('🎉 Welcome, Prof. P. R. Nerkar! Signed in to Campus Admin Portal.', 'success');
       if (btn) btn.disabled = false;
     });
@@ -313,57 +395,39 @@ class CampusApp {
     const btn = document.getElementById('btn-student-login');
     if (btn) btn.disabled = true;
 
-    // Trigger radiating web / pulse animation from video
-    this.triggerCinematicLoginBurst('🎓', () => {
+    this.triggerCinematicLoginBurst('👨‍🎓', () => {
       this.switchUser(studentUser.user_id);
       this.showToast(`🎉 Welcome, ${studentUser.name}! Signed in to Student Portal (Roll ${studentUser.roll_no}).`, 'success');
       if (btn) btn.disabled = false;
     });
   }
 
-  openStaffLoginDropdown() {
-    // Provide secondary modal for evaluating technician accounts
-    const users = window.db.getUsers();
-    const staff = users.filter(u => u.role === 'STAFF');
+  handleStaffLoginSubmit(e) {
+    if (e) e.preventDefault();
+    const select = document.getElementById('staff-persona-select');
+    const selectedUserId = select ? parseInt(select.value, 10) : 6;
+    const staffUser = window.db.getUserById(selectedUserId) || window.db.getUserById(6);
 
-    const modalBody = `
-      <div class="role-selector-container">
-        <p class="section-hint">Select a Department Maintenance Technician to inspect and accept tickets:</p>
-        <div class="persona-cards" style="margin-top:12px;">
-          ${staff.map(u => this.renderPersonaOption(u)).join('')}
-        </div>
-      </div>
-    `;
-    this.closeSignInPage();
-    this.openCustomModal('Department Maintenance Staff Login', modalBody);
+    const btn = document.getElementById('btn-staff-login');
+    if (btn) btn.disabled = true;
+
+    this.triggerCinematicLoginBurst('🔧', () => {
+      this.switchUser(staffUser.user_id);
+      const dept = window.db.getDepartments().find(d => d.department_id === staffUser.department_id);
+      this.showToast(`🎉 Welcome, ${staffUser.name}! Signed in to Maintenance Staff Portal [${dept?.dept_code || 'STAFF'}].`, 'success');
+      if (btn) btn.disabled = false;
+    });
   }
 
   logout() {
     localStorage.removeItem('campusfix_active_user');
     localStorage.removeItem('campuscare_active_user');
     this.showToast('You have logged out of your session.', 'info');
-    // Open Sign In Page in student or admin mode
     this.openSignInPage('admin');
   }
 
   openRoleSwitcherModal() {
-    // Delegated to the new Dual-Panel Sign In Page!
     this.openSignInPage();
-  }
-
-  renderPersonaOption(user) {
-    const isActive = user.user_id === this.currentUser.user_id;
-    return `
-      <div class="persona-card ${isActive ? 'active' : ''}" onclick="window.app.switchUser(${user.user_id})">
-        <div class="persona-avatar">${user.avatar || '👤'}</div>
-        <div class="persona-info">
-          <div class="persona-name">${user.name} ${isActive ? '<span class="active-tag">(Current)</span>' : ''}</div>
-          <div class="persona-detail">${user.title || user.email}</div>
-          <div class="persona-role-tag role-${user.role.toLowerCase()}">${user.role}${user.roll_no ? ` • Roll ${user.roll_no}` : ''}</div>
-        </div>
-        <button class="btn btn-sm ${isActive ? 'btn-primary' : 'btn-ghost'}">Select</button>
-      </div>
-    `;
   }
 
   // ==========================================
@@ -400,8 +464,16 @@ class CampusApp {
   renderComplaintsList() {
     let complaints = window.db.getComplaints(this.currentFilter);
 
-    // If viewing as Staff, optionally highlight or filter tickets
-    // If viewing as Student, show quick badge if it's their own ticket
+    // If viewing as Staff, automatically prioritize tickets assigned to this technician at the top!
+    if (this.currentUser && this.currentUser.role === 'STAFF') {
+      complaints.sort((a, b) => {
+        const aMine = a.assigned_to === this.currentUser.user_id ? 1 : 0;
+        const bMine = b.assigned_to === this.currentUser.user_id ? 1 : 0;
+        if (bMine !== aMine) return bMine - aMine;
+        return new Date(b.created_at) - new Date(a.created_at);
+      });
+    }
+
     const countBadge = document.getElementById('complaint-count-badge');
     if (countBadge) countBadge.textContent = `${complaints.length} Records`;
 
@@ -622,30 +694,51 @@ class CampusApp {
       `;
     }
 
-    // 2. Staff Work Progress & Resolution Action
-    if ((isStaff && (isAssignedTech || isAdmin)) && c.status !== 'Closed') {
+    // 2. Staff Work Progress & Resolution Action (Accessible by Admin OR the assigned Technician)
+    if ((isAdmin || (isStaff && isAssignedTech)) && c.status !== 'Closed') {
+      const isAssigned = c.status === 'Assigned' || c.status === 'Pending';
+      const isInProgress = c.status === 'In Progress';
+      const isResolved = c.status === 'Resolved';
+
       actionPanelHtml += `
         <div class="action-card staff-action-card">
-          <h4>🔧 Staff Maintenance Action & Work Log</h4>
-          <p class="text-sm">Update progress status and append technician field notes:</p>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+            <h4 style="margin:0;">🔧 Maintenance Staff Action &amp; Work Order</h4>
+            <span class="badge-mini" style="background:#5E936C; color:#fff;">Staff Access</span>
+          </div>
+          <p class="text-sm">Proceed this problem to <strong>In-Process</strong> state or mark as <strong>Solved</strong>:</p>
           <form onsubmit="window.app.handleStatusUpdateForm(event, ${c.complaint_id})">
             <div class="form-row">
               <div class="form-group">
-                <label>Transition Status To:</label>
+                <label>Transition State To:</label>
                 <select name="new_status" class="form-input" required>
-                  ${c.status === 'Assigned' ? '<option value="In Progress">Start Work (In Progress)</option>' : ''}
-                  ${c.status === 'In Progress' ? '<option value="Resolved">Mark Resolved</option>' : ''}
-                  ${c.status === 'Pending' ? '<option value="In Progress">Start Work Directly</option>' : ''}
-                  <option value="Resolved">Mark Resolved</option>
+                  ${isAssigned ? '<option value="In Progress" selected>⚡ In-Process State (Start Work / In Progress)</option>' : ''}
+                  ${isInProgress ? '<option value="Resolved" selected>✅ Solved State (Mark Resolved)</option>' : ''}
+                  ${isAssigned ? '<option value="Resolved">✅ Solved State (Mark Resolved Directly)</option>' : ''}
+                  ${isResolved ? '<option value="Resolved" selected>✅ Already Solved (Resolved)</option>' : ''}
+                  ${!isAssigned && !isInProgress && !isResolved ? '<option value="In Progress">⚡ In-Process State</option><option value="Resolved">✅ Solved State</option>' : ''}
                 </select>
               </div>
               <div class="form-group">
-                <label>Work Log / Resolution Remarks:</label>
-                <input type="text" name="notes" class="form-input" placeholder="e.g. Replaced 10A fuse, tightened terminals" required />
+                <label>Technician Field Notes / Remarks:</label>
+                <input type="text" name="notes" class="form-input" 
+                       placeholder="${isInProgress ? 'e.g. Replaced capacitor, tested voltage under load, fully solved.' : 'e.g. Arrived on site, diagnosed issue, commencing repairs...'}" 
+                       required />
               </div>
             </div>
-            <button type="submit" class="btn btn-success btn-sm">⚡ Execute Status Transition</button>
+            <button type="submit" class="btn btn-success btn-sm">
+              ${isAssigned ? '⚡ Proceed to In-Process State' : (isInProgress ? '✅ Mark as Solved State (Resolved)' : '⚡ Update Status')}
+            </button>
           </form>
+        </div>
+      `;
+    } else if (c.status === 'Resolved' && isStaff && isAssignedTech) {
+      actionPanelHtml += `
+        <div class="action-card" style="background: rgba(94, 147, 108, 0.15); border-left: 4px solid #5E936C; padding: 12px 16px;">
+          <h4 style="color:#2E5A36; margin:0 0 4px 0;">🎉 Problem Solved &amp; Marked as Resolved!</h4>
+          <p class="text-sm" style="margin:0; color:#1e293b;">
+            Your work has been saved in the relational database. Waiting for student satisfaction review to transition this ticket to the <strong>Closed</strong> state.
+          </p>
         </div>
       `;
     }
@@ -654,11 +747,14 @@ class CampusApp {
     if (c.status === 'Resolved' && !c.feedback) {
       actionPanelHtml += `
         <div class="action-card feedback-action-card">
-          <h4>⭐ Student Resolution Review & Feedback</h4>
-          <p class="text-sm">Rate service quality to automatically trigger Ticket Closure in the database:</p>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+            <h4 style="margin:0;">⭐ Student Resolution Review &amp; Feedback</h4>
+            <span class="badge-mini" style="background:#D98C45; color:#fff;">Student Access</span>
+          </div>
+          <p class="text-sm">Rate the technician's repair work to transition this problem to the <strong>Closed</strong> state (Database Trigger):</p>
           <form onsubmit="window.app.handleFeedbackForm(event, ${c.complaint_id})">
             <div class="star-rating-select">
-              <label>Rating:</label>
+              <label>Service Rating:</label>
               <div class="star-group">
                 <input type="radio" id="star5" name="rating" value="5" checked><label for="star5">★ 5 Stars (Excellent)</label>
                 <input type="radio" id="star4" name="rating" value="4"><label for="star4">★ 4 Stars (Good)</label>
@@ -668,10 +764,10 @@ class CampusApp {
               </div>
             </div>
             <div class="form-group" style="margin-top:10px;">
-              <label>Comments / Feedback:</label>
-              <textarea name="comments" class="form-input" rows="2" placeholder="Was the issue resolved properly? Any comments..."></textarea>
+              <label>Student Feedback Comments:</label>
+              <textarea name="comments" class="form-input" rows="2" placeholder="Was the maintenance issue resolved satisfactorily? Any comments..."></textarea>
             </div>
-            <button type="submit" class="btn btn-primary btn-sm">🌟 Submit Feedback & Auto-Close (Trigger)</button>
+            <button type="submit" class="btn btn-primary btn-sm" style="margin-top:8px;">🌟 Submit Feedback &amp; Move to Closed State</button>
           </form>
         </div>
       `;

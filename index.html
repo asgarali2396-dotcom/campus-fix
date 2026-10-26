@@ -27,7 +27,7 @@
     href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
     rel="stylesheet">
 
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/style.css?v=3.2">
 </head>
 
 <body>
@@ -168,12 +168,19 @@
         </div>
       </div>
 
-      <!-- Current Perspective Notice -->
+      <!-- Current Perspective Notice with 3 Direct Role Switches -->
       <div class="perspective-bar">
-        <span class="perspective-icon">👁️</span>
-        <span id="rbac-current-perspective">Viewing as Student / Reporter (Roll 28). Submit tickets, track lifecycle,
-          and review resolutions.</span>
-        <button class="btn-link" onclick="window.app.openRoleSwitcherModal()">Switch Role ⇄</button>
+        <div class="perspective-main">
+          <span class="perspective-icon">👁️</span>
+          <span id="rbac-current-perspective">Viewing as Student / Reporter (Roll 28). Submit tickets, track lifecycle, and review resolutions.</span>
+        </div>
+        <div class="quick-role-switch-group">
+          <span class="switch-label">Role Switch:</span>
+          <button type="button" class="btn-quick-role student-btn active" id="quick-btn-student" onclick="window.app.switchUser(2)" title="Switch to Student: Sarth Pande (Roll 28)">👨‍🎓 Student</button>
+          <button type="button" class="btn-quick-role admin-btn" id="quick-btn-admin" onclick="window.app.switchUser(1)" title="Switch to Administrator: Prof. P. R. Nerkar">🛡️ Admin</button>
+          <button type="button" class="btn-quick-role staff-btn" id="quick-btn-staff" onclick="window.app.switchUser(6)" title="Switch to Maintenance Staff: Rajesh Sharma">🔧 Staff</button>
+          <button type="button" class="btn-link" onclick="window.app.openSignInPage()" title="Open 3-Access Sign In Portals">Sign In Portals ⇄</button>
+        </div>
       </div>
     </section>
 
@@ -716,182 +723,256 @@ JOIN departments d ON cat.department_id = d.department_id;</textarea>
     <div class="auth-ambient-glow glow-1"></div>
     <div class="auth-ambient-glow glow-2"></div>
 
-    <!-- Main Dual Slider Card Container -->
-    <div class="auth-container" id="auth-slider-container">
-
-      <!-- =============================== -->
-      <!-- FORM 1: ADMIN SIGN IN (Left)    -->
-      <!-- =============================== -->
-      <div class="auth-form-wrapper auth-admin-form-box">
-        <form class="auth-form" id="admin-signin-form" onsubmit="window.app.handleAdminLoginSubmit(event)">
-          <div class="auth-form-header">
-            <div class="auth-role-pill admin-pill">
-              <span class="pill-dot red"></span> ADMIN ACCESS
-            </div>
-            <h2 class="auth-heading">Sign In</h2>
-            <p class="auth-subheading">Sign in with Username &amp; Password</p>
+    <!-- 3-Role Access Container (Student, Admin, Maintenance Staff) -->
+    <div class="auth-3role-container" id="auth-main-container">
+      
+      <!-- Top 3-Role Tab Switcher -->
+      <div class="auth-role-tabs-bar">
+        <button type="button" class="auth-role-tab-btn active" id="tab-btn-student" onclick="window.app.setAuthRoleTab('student')">
+          <span class="tab-btn-icon">👨‍🎓</span>
+          <div class="tab-btn-text">
+            <span class="tab-btn-title">Student Access</span>
+            <small class="tab-btn-sub">Report &amp; Review</small>
           </div>
-
-          <div class="auth-fields">
-            <div class="auth-input-group">
-              <label for="admin-email-input" class="auth-input-label">Username / Email</label>
-              <div class="auth-input-wrapper">
-                <span class="auth-input-icon">👤</span>
-                <input type="text" id="admin-email-input" class="auth-input" placeholder="e.g. pr.nerkar@campus.edu" required autocomplete="username" value="pr.nerkar@campus.edu">
-              </div>
-            </div>
-
-            <div class="auth-input-group">
-              <label for="admin-password-input" class="auth-input-label">Password</label>
-              <div class="auth-input-wrapper">
-                <span class="auth-input-icon">🔒</span>
-                <input type="password" id="admin-password-input" class="auth-input" placeholder="Enter password" required autocomplete="current-password" value="admin123">
-                <button type="button" class="btn-pwd-eye" onclick="window.app.togglePasswordVisibility('admin-password-input', this)" title="Toggle password visibility">
-                  👁️
-                </button>
-              </div>
-            </div>
-
-            <div class="auth-helper-row">
-              <label class="auth-remember-check">
-                <input type="checkbox" id="admin-remember" checked>
-                <span>Remember me</span>
-              </label>
-              <a href="javascript:void(0)" class="auth-link" onclick="window.app.showAdminCredentialsHint()">Forgot Password?</a>
-            </div>
-
-            <!-- Demo Hint Quick Fill Pill -->
-            <div class="auth-demo-shortcut" onclick="window.app.fillAdminDemoCredentials()" title="Click to autofill credentials for Prof. P. R. Nerkar">
-              <span class="shortcut-icon">⚡</span>
-              <span>1-Click Demo: <strong>Prof. P. R. Nerkar</strong></span>
-            </div>
-
-            <button type="submit" class="auth-btn-primary" id="btn-admin-login">
-              <span class="btn-label">LOGIN</span>
-            </button>
+        </button>
+        <button type="button" class="auth-role-tab-btn" id="tab-btn-admin" onclick="window.app.setAuthRoleTab('admin')">
+          <span class="tab-btn-icon">🛡️</span>
+          <div class="tab-btn-text">
+            <span class="tab-btn-title">Admin Access</span>
+            <small class="tab-btn-sub">Dispatch &amp; Oversee</small>
           </div>
-
-          <div class="auth-footer-note">
-            <span>🛡️ Campus Chief Administrator &bull; DBMS Mini Project</span>
+        </button>
+        <button type="button" class="auth-role-tab-btn" id="tab-btn-staff" onclick="window.app.setAuthRoleTab('staff')">
+          <span class="tab-btn-icon">🔧</span>
+          <div class="tab-btn-text">
+            <span class="tab-btn-title">Maintenance Staff</span>
+            <small class="tab-btn-sub">Resolve Work Orders</small>
           </div>
-        </form>
+        </button>
       </div>
 
-      <!-- =============================== -->
-      <!-- FORM 2: STUDENT SIGN IN (Right) -->
-      <!-- =============================== -->
-      <div class="auth-form-wrapper auth-student-form-box">
-        <form class="auth-form" id="student-signin-form" onsubmit="window.app.handleStudentLoginSubmit(event)">
-          <div class="auth-form-header">
-            <div class="auth-role-pill student-pill">
-              <span class="pill-dot red"></span> STUDENT PORTAL
-            </div>
-            <h2 class="auth-heading">Sign In</h2>
-            <p class="auth-subheading">Sign in with Roll No &amp; Password</p>
-          </div>
+      <!-- Main Body: Two Columns (Form Pane on Left, Role Preview Banner on Right) -->
+      <div class="auth-3role-body">
 
-          <div class="auth-fields">
-            <!-- Student Persona Quick Selector -->
-            <div class="auth-input-group">
-              <label for="student-persona-select" class="auth-input-label">Select Student Account</label>
-              <div class="auth-input-wrapper">
-                <span class="auth-input-icon">👨‍🎓</span>
-                <select id="student-persona-select" class="auth-select" onchange="window.app.onStudentPersonaChange(this.value)">
-                  <option value="2">Roll 28 — Sarth Santosh Pande</option>
-                  <option value="3">Roll 30 — Takshak Rahul Sirsat</option>
-                  <option value="11">Roll 35 — Manthan Vinod Dhamal</option>
-                  <option value="4">Roll 40 — Ali Asgar Yusuf Ali</option>
-                  <option value="5">Roll 53 — Rohit Sudhir Karpe</option>
-                </select>
+        <!-- Left Column: Forms -->
+        <div class="auth-forms-column">
+
+          <!-- =============================== -->
+          <!-- PORTAL 1: STUDENT ACCESS        -->
+          <!-- =============================== -->
+          <div class="auth-role-pane active" id="auth-pane-student">
+            <form class="auth-form" id="student-signin-form" onsubmit="window.app.handleStudentLoginSubmit(event)">
+              <div class="auth-form-header">
+                <div class="auth-role-pill student-pill">
+                  <span class="pill-dot"></span> STUDENT PORTAL
+                </div>
+                <h2 class="auth-heading">Student Sign In</h2>
+                <p class="auth-subheading">Report campus infrastructure issues &amp; track resolutions</p>
               </div>
-            </div>
 
-            <div class="auth-input-group">
-              <label for="student-email-input" class="auth-input-label">Roll No / Student Email</label>
-              <div class="auth-input-wrapper">
-                <span class="auth-input-icon">🆔</span>
-                <input type="text" id="student-email-input" class="auth-input" placeholder="Roll 28 or sarth.pande@student.campus.edu" required autocomplete="username" value="28">
-              </div>
-            </div>
+              <div class="auth-fields">
+                <div class="auth-input-group">
+                  <label for="student-persona-select" class="auth-input-label">Select Student Account</label>
+                  <div class="auth-input-wrapper">
+                    <span class="auth-input-icon">👨‍🎓</span>
+                    <select id="student-persona-select" class="auth-select" onchange="window.app.onStudentPersonaChange(this.value)">
+                      <option value="2">Roll 28 — Sarth Santosh Pande</option>
+                      <option value="3">Roll 30 — Takshak Rahul Sirsat</option>
+                      <option value="11">Roll 35 — Manthan Vinod Dhamal</option>
+                      <option value="4">Roll 40 — Ali Asgar Yusuf Ali</option>
+                      <option value="5">Roll 53 — Rohit Sudhir Karpe</option>
+                    </select>
+                  </div>
+                </div>
 
-            <div class="auth-input-group">
-              <label for="student-password-input" class="auth-input-label">Password</label>
-              <div class="auth-input-wrapper">
-                <span class="auth-input-icon">🔒</span>
-                <input type="password" id="student-password-input" class="auth-input" placeholder="Enter password" required autocomplete="current-password" value="student123">
-                <button type="button" class="btn-pwd-eye" onclick="window.app.togglePasswordVisibility('student-password-input', this)" title="Toggle password visibility">
-                  👁️
+                <div class="auth-input-group">
+                  <label for="student-email-input" class="auth-input-label">Roll No / Student Email</label>
+                  <div class="auth-input-wrapper">
+                    <span class="auth-input-icon">🆔</span>
+                    <input type="text" id="student-email-input" class="auth-input" placeholder="Roll 28 or sarth.pande@student.campus.edu" required autocomplete="username" value="28">
+                  </div>
+                </div>
+
+                <div class="auth-input-group">
+                  <label for="student-password-input" class="auth-input-label">Password</label>
+                  <div class="auth-input-wrapper">
+                    <span class="auth-input-icon">🔒</span>
+                    <input type="password" id="student-password-input" class="auth-input" placeholder="Enter password" required autocomplete="current-password" value="student123">
+                    <button type="button" class="btn-pwd-eye" onclick="window.app.togglePasswordVisibility('student-password-input', this)" title="Toggle password visibility">👁️</button>
+                  </div>
+                </div>
+
+                <div class="auth-helper-row">
+                  <label class="auth-remember-check">
+                    <input type="checkbox" id="student-remember" checked>
+                    <span>Remember me</span>
+                  </label>
+                  <a href="javascript:void(0)" class="auth-link" onclick="window.app.showStudentCredentialsHint()">Credentials Hint</a>
+                </div>
+
+                <!-- 1-Click Demo Shortcut -->
+                <div class="auth-demo-shortcut" onclick="window.app.fillStudentDemoCredentials(2)" title="1-Click Login for Sarth Pande (Roll 28)">
+                  <span class="shortcut-icon">⚡</span>
+                  <span>1-Click Demo: <strong>Sarth Pande (Roll 28)</strong></span>
+                </div>
+
+                <button type="submit" class="auth-btn-primary" id="btn-student-login">
+                  <span>LOGIN AS STUDENT</span> ➔
                 </button>
               </div>
-            </div>
-
-            <div class="auth-helper-row">
-              <label class="auth-remember-check">
-                <input type="checkbox" id="student-remember" checked>
-                <span>Remember me</span>
-              </label>
-              <a href="javascript:void(0)" class="auth-link" onclick="window.app.showStudentCredentialsHint()">Forgot Password?</a>
-            </div>
-
-            <button type="submit" class="auth-btn-primary" id="btn-student-login">
-              <span class="btn-label">LOGIN</span>
-            </button>
+            </form>
           </div>
 
-          <!-- Quick Staff Link for complete academic grading functionality -->
-          <div class="auth-staff-link">
-            <span>Maintenance Technician? <a href="javascript:void(0)" onclick="window.app.openStaffLoginDropdown()">Staff Login</a></span>
+          <!-- =============================== -->
+          <!-- PORTAL 2: ADMIN ACCESS          -->
+          <!-- =============================== -->
+          <div class="auth-role-pane" id="auth-pane-admin">
+            <form class="auth-form" id="admin-signin-form" onsubmit="window.app.handleAdminLoginSubmit(event)">
+              <div class="auth-form-header">
+                <div class="auth-role-pill admin-pill">
+                  <span class="pill-dot"></span> ADMINISTRATOR ACCESS
+                </div>
+                <h2 class="auth-heading">Admin Sign In</h2>
+                <p class="auth-subheading">Triage complaints, allocate technicians &amp; oversee SLAs</p>
+              </div>
+
+              <div class="auth-fields">
+                <div class="auth-input-group">
+                  <label for="admin-email-input" class="auth-input-label">Admin Email / Username</label>
+                  <div class="auth-input-wrapper">
+                    <span class="auth-input-icon">👤</span>
+                    <input type="text" id="admin-email-input" class="auth-input" placeholder="e.g. pr.nerkar@campus.edu" required autocomplete="username" value="pr.nerkar@campus.edu">
+                  </div>
+                </div>
+
+                <div class="auth-input-group">
+                  <label for="admin-password-input" class="auth-input-label">Password</label>
+                  <div class="auth-input-wrapper">
+                    <span class="auth-input-icon">🔒</span>
+                    <input type="password" id="admin-password-input" class="auth-input" placeholder="Enter password" required autocomplete="current-password" value="admin123">
+                    <button type="button" class="btn-pwd-eye" onclick="window.app.togglePasswordVisibility('admin-password-input', this)" title="Toggle password visibility">👁️</button>
+                  </div>
+                </div>
+
+                <div class="auth-helper-row">
+                  <label class="auth-remember-check">
+                    <input type="checkbox" id="admin-remember" checked>
+                    <span>Remember me</span>
+                  </label>
+                  <a href="javascript:void(0)" class="auth-link" onclick="window.app.showAdminCredentialsHint()">Credentials Hint</a>
+                </div>
+
+                <!-- 1-Click Demo Shortcut -->
+                <div class="auth-demo-shortcut" onclick="window.app.fillAdminDemoCredentials()" title="1-Click Login for Prof. P. R. Nerkar">
+                  <span class="shortcut-icon">⚡</span>
+                  <span>1-Click Demo: <strong>Prof. P. R. Nerkar (Admin)</strong></span>
+                </div>
+
+                <button type="submit" class="auth-btn-primary" id="btn-admin-login">
+                  <span>LOGIN AS ADMINISTRATOR</span> ➔
+                </button>
+              </div>
+            </form>
           </div>
-        </form>
-      </div>
 
-      <!-- =============================== -->
-      <!-- SLIDING OVERLAY CONTAINER      -->
-      <!-- =============================== -->
-      <div class="auth-overlay-container">
-        <div class="auth-overlay">
+          <!-- =============================== -->
+          <!-- PORTAL 3: MAINTENANCE STAFF     -->
+          <!-- =============================== -->
+          <div class="auth-role-pane" id="auth-pane-staff">
+            <form class="auth-form" id="staff-signin-form" onsubmit="window.app.handleStaffLoginSubmit(event)">
+              <div class="auth-form-header">
+                <div class="auth-role-pill staff-pill">
+                  <span class="pill-dot"></span> MAINTENANCE STAFF ACCESS
+                </div>
+                <h2 class="auth-heading">Staff Sign In</h2>
+                <p class="auth-subheading">Inspect assigned tasks, advance progress &amp; mark issues solved</p>
+              </div>
 
-          <!-- Left Overlay Panel (Shown when Student Form is active on Right) -->
-          <div class="auth-overlay-panel auth-overlay-left">
-            <div class="auth-overlay-icon-wrap">
-              <!-- Admin Shield / Crest Emblem SVG -->
-              <svg class="auth-panel-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M50 12L85 24V48C85 70 50 88 50 88C50 88 15 70 15 48V24L50 12Z" fill="white" fill-opacity="0.95"/>
-                <path d="M50 16L81 26.5V48C81 67.5 50 83.5 50 83.5C50 83.5 19 67.5 19 48V26.5L50 16Z" stroke="#e50914" stroke-width="2"/>
-                <circle cx="50" cy="45" r="10" fill="#e50914"/>
-                <path d="M36 66C36 58 42 53 50 53C58 53 64 58 64 66" stroke="#e50914" stroke-width="4" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h1 class="auth-overlay-title">HELLO, ADMIN!</h1>
-            <p class="auth-overlay-desc">
-              Enter the campus administration portal to oversee maintenance requests, manage SLAs, and verify database integrity.
-            </p>
-            <button type="button" class="auth-btn-outline" id="btn-switch-to-admin" onclick="window.app.setAuthSliderMode('admin')">
-              ADMIN SIGN IN
-            </button>
-          </div>
+              <div class="auth-fields">
+                <div class="auth-input-group">
+                  <label for="staff-persona-select" class="auth-input-label">Select Maintenance Technician</label>
+                  <div class="auth-input-wrapper">
+                    <span class="auth-input-icon">🔧</span>
+                    <select id="staff-persona-select" class="auth-select" onchange="window.app.onStaffPersonaChange(this.value)">
+                      <option value="6">Rajesh Sharma (⚡ Electrical Maintenance • ELEC - ID #6)</option>
+                      <option value="7">Amit Verma (💻 IT &amp; Networking • NETW - ID #7)</option>
+                      <option value="8">Sunita Devi (🧹 Sanitation &amp; Hygiene • SANI - ID #8)</option>
+                      <option value="9">Vikas Patil (🔨 Civil &amp; Carpentry • CIVL - ID #9)</option>
+                      <option value="10">Dr. Sanjay Kulkarni (🔬 Laboratory Equipment • LABS - ID #10)</option>
+                    </select>
+                  </div>
+                </div>
 
-          <!-- Right Overlay Panel (Shown when Admin Form is active on Left) -->
-          <div class="auth-overlay-panel auth-overlay-right">
-            <div class="auth-overlay-icon-wrap">
-              <!-- Student Graduation Cap SVG -->
-              <svg class="auth-panel-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="50,22 88,38 50,54 12,38" fill="white" fill-opacity="0.95"/>
-                <path d="M26 44V64C26 72 38 78 50 78C62 78 74 72 74 64V44" fill="white" fill-opacity="0.95"/>
-                <path d="M88 38V68" stroke="white" stroke-width="4" stroke-linecap="round"/>
-                <circle cx="88" cy="72" r="5" fill="white"/>
-              </svg>
-            </div>
-            <h1 class="auth-overlay-title">HELLO, STUDENT!</h1>
-            <p class="auth-overlay-desc">
-              Enter the student maintenance portal to report hostel &amp; campus issues, track repair tickets, and rate service quality.
-            </p>
-            <button type="button" class="auth-btn-outline" id="btn-switch-to-student" onclick="window.app.setAuthSliderMode('student')">
-              STUDENT SIGN IN
-            </button>
+                <div class="auth-input-group">
+                  <label for="staff-email-input" class="auth-input-label">Staff ID / Official Email</label>
+                  <div class="auth-input-wrapper">
+                    <span class="auth-input-icon">🆔</span>
+                    <input type="text" id="staff-email-input" class="auth-input" placeholder="rajesh.sharma@staff.campus.edu" required autocomplete="username" value="rajesh.sharma@staff.campus.edu">
+                  </div>
+                </div>
+
+                <div class="auth-input-group">
+                  <label for="staff-password-input" class="auth-input-label">Password</label>
+                  <div class="auth-input-wrapper">
+                    <span class="auth-input-icon">🔒</span>
+                    <input type="password" id="staff-password-input" class="auth-input" placeholder="Enter password" required autocomplete="current-password" value="staff123">
+                    <button type="button" class="btn-pwd-eye" onclick="window.app.togglePasswordVisibility('staff-password-input', this)" title="Toggle password visibility">👁️</button>
+                  </div>
+                </div>
+
+                <div class="auth-helper-row">
+                  <label class="auth-remember-check">
+                    <input type="checkbox" id="staff-remember" checked>
+                    <span>Remember me</span>
+                  </label>
+                  <a href="javascript:void(0)" class="auth-link" onclick="window.app.showStaffCredentialsHint()">Credentials Hint</a>
+                </div>
+
+                <!-- 1-Click Demo Shortcut -->
+                <div class="auth-demo-shortcut" onclick="window.app.fillStaffDemoCredentials(6)" title="1-Click Login for Rajesh Sharma (Electrician)">
+                  <span class="shortcut-icon">⚡</span>
+                  <span>1-Click Demo: <strong>Rajesh Sharma (Staff #6)</strong></span>
+                </div>
+
+                <button type="submit" class="auth-btn-primary" id="btn-staff-login">
+                  <span>LOGIN AS MAINTENANCE STAFF</span> ➔
+                </button>
+              </div>
+            </form>
           </div>
 
         </div>
+
+        <!-- Right Column: Dynamic Role Context & DBMS Architecture Banner -->
+        <div class="auth-info-column" id="auth-info-card">
+          <div class="info-content-card">
+            <div class="info-emblem-wrap" id="info-role-emblem">👨‍🎓</div>
+            <h3 class="info-role-title" id="info-role-title">Student Access</h3>
+            <p class="info-role-desc" id="info-role-desc">
+              Submit geotagged complaints across classrooms, hostels, and labs. Track real-time progress through 5 lifecycle stages, and provide 1-to-5 star reviews upon resolution.
+            </p>
+
+            <div class="info-dbms-highlights" id="info-dbms-highlights">
+              <div class="dbms-bullet">
+                <span class="bullet-check">✓</span>
+                <span><strong>Relational Integrity:</strong> Strict 1:1 constraint between Complaints &amp; Feedback.</span>
+              </div>
+              <div class="dbms-bullet">
+                <span class="bullet-check">✓</span>
+                <span><strong>CHECK Constraint:</strong> Student rating strictly bounded between 1 and 5 stars.</span>
+              </div>
+              <div class="dbms-bullet">
+                <span class="bullet-check">✓</span>
+                <span><strong>ACID Atomic Submission:</strong> Instant ticket number generation via transactions.</span>
+              </div>
+            </div>
+
+            <div class="info-quick-switch-hint">
+              <span>Want to switch role instantly during Viva? Use the <strong>Role Switch</strong> bar on the main dashboard!</span>
+            </div>
+          </div>
+        </div>
+
       </div>
 
     </div>
@@ -911,7 +992,7 @@ JOIN departments d ON cat.department_id = d.department_id;</textarea>
   <!-- Application Scripts -->
   <script src="./js/db.js?v=3.0"></script>
   <script src="./js/dbms-showcase.js?v=3.0"></script>
-  <script src="./js/app.js?v=3.0"></script>
+  <script src="./js/app.js?v=3.2"></script>
 </body>
 
 </html>
